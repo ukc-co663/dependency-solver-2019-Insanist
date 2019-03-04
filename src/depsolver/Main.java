@@ -37,6 +37,19 @@ public class Main {
 
     // CHANGE CODE BELOW:
     // using repo, initial and constraints, compute a solution and print the answer
+    List<String> posConst = new List<String>() {};
+    List<String> negConst = new List<String>() {};
+
+    for (String i : constraints) {
+      if (i.charAt(0) == '+') {
+        posConst.add(i.substring(1));
+      } else if (i.charAt(1) == '-') {
+        negConst.add(i.substring(1));
+      }
+    }
+
+    System.out.println(posConst.size());
+
     for (Package p : repo) {
       System.out.printf("package %s version %s\n", p.getName(), p.getVersion());
       for (List<String> clause : p.getDepends()) {
@@ -48,9 +61,7 @@ public class Main {
       }
     }
 
-    for (String i : constraints) {
-      System.out.println(i);
-    }
+    
   }
 
   static String readFile(String filename) throws IOException {
