@@ -37,8 +37,8 @@ public class Main {
 
     // CHANGE CODE BELOW:
     // using repo, initial and constraints, compute a solution and print the answer
-    List<String> posConst = new List<String>();
-    List<String> negConst = new List<String>();
+    List<String> posConst = new ArrayList<String>();
+    List<String> negConst = new ArrayList<String>();
 
     for (String i : constraints) {
       if (i.charAt(0) == '+') {
