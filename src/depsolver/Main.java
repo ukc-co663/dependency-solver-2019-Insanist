@@ -47,6 +47,10 @@ public class Main {
         System.out.printf("\n");
       }
     }
+
+    for (String i : constraints) {
+      System.out.println(i);
+    }
   }
 
   static String readFile(String filename) throws IOException {
