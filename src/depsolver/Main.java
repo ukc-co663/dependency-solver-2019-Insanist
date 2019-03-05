@@ -6,7 +6,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Stack;
 
 class Package {
   private String name;
@@ -40,6 +42,19 @@ public class Main {
     List<String> posConst = new ArrayList<String>();
     List<String> negConst = new ArrayList<String>();
 
+    //DFS components
+    Stack<Package> dfsStack = new Stack<>();
+    List<String> dfsVisited = new ArrayList<>();
+
+    HashMap<String, String> installed = new HashMap<>();
+
+    for (String init : initial) {
+      String[] temp = init.split("=",2);
+      System.out.println(temp[0] + " " + temp[1]);
+    }
+
+
+    // Store positive and negative constraints to check against when installing
     for (String i : constraints) {
       if (i.charAt(0) == '+') {
         posConst.add(i.substring(1));
@@ -47,6 +62,11 @@ public class Main {
         negConst.add(i.substring(1));
       }
     }
+
+    // 1. Start with constraint package
+    // 2. DFS traverse from start package
+    //  2a. Cycle through deps in alpha order
+
 
     System.out.println(posConst.size());
 
