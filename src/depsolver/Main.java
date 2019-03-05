@@ -39,29 +39,33 @@ public class Main {
 
     // CHANGE CODE BELOW:
     // using repo, initial and constraints, compute a solution and print the answer
-    List<String> posConst = new ArrayList<String>();
-    List<String> negConst = new ArrayList<String>();
+    HashMap<String, String> posConst = new ArrayList<String, String>();
+    HashMap<String, String> negConst = new ArrayList<String, String>();
 
     //DFS components
     Stack<Package> dfsStack = new Stack<>();
     List<String> dfsVisited = new ArrayList<>();
 
-    HashMap<String, String> installed = new HashMap<>();
-
-    for (String init : initial) {
-      String[] temp = init.split("=",2);
-      System.out.println(temp[0] + " " + temp[1]);
-    }
-
-
     // Store positive and negative constraints to check against when installing
     for (String i : constraints) {
       if (i.charAt(0) == '+') {
-        posConst.add(i.substring(1));
+        String[] posTemp = i.split("=",2);
+        posConst.put(posTemp(0), posTemp(1));
       } else if (i.charAt(1) == '-') {
-        negConst.add(i.substring(1));
+        String[] negTemp = i.split("=",2);
+        negConst.put(negTemp(0), negTemp(1));
       }
     }
+    
+
+    HashMap<String, String> installed = new HashMap<>();
+    // Add packages from initial to installed HashMap
+    for (String init : initial) {
+      String[] temp = init.split("=",2);
+      installed.put(temp[0], temp[1]);
+    }
+
+    String commands = "[";
 
     // 1. Start with constraint package
     // 2. DFS traverse from start package
@@ -69,19 +73,24 @@ public class Main {
 
 
     System.out.println(posConst.size());
-
+    boolean isFirst = true;
     for (Package p : repo) {
-      System.out.printf("package %s version %s\n", p.getName(), p.getVersion());
-      for (List<String> clause : p.getDepends()) {
-        System.out.printf("  dep:");
-        for (String q : clause) {
-          System.out.printf(" %s", q);
+      // Attempt at seen 9
+      // If package isnt a negative constraint - install it
+      if (!negConst.contains(p.getName())) {
+        installed.put(p.getName(),p.getVersion());
+        if (isFirst) {
+          commands += p.getName() + "=" + p.getVersion();
+          isFirst = false;
+        } else {
+          commands += ",\"" + p.getName() + "=" + p.getVersion() + "\"";
         }
-        System.out.printf("\n");
       }
     }
 
+    commands += "]";
     
+    System.out.println(commands);
   }
 
   static String readFile(String filename) throws IOException {
