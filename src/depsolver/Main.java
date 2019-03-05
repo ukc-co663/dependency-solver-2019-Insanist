@@ -77,7 +77,7 @@ public class Main {
     for (Package p : repo) {
       // Attempt at seen 9
       // If package isnt a negative constraint - install it
-      if (!negConst.contains(p.getName())) {
+      if (!negConst.containsKey(p.getName())) {
         installed.put(p.getName(),p.getVersion());
         if (isFirst) {
           commands += p.getName() + "=" + p.getVersion();
