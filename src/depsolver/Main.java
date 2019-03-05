@@ -39,8 +39,8 @@ public class Main {
 
     // CHANGE CODE BELOW:
     // using repo, initial and constraints, compute a solution and print the answer
-    HashMap<String, String> posConst = new ArrayList<String, String>();
-    HashMap<String, String> negConst = new ArrayList<String, String>();
+    HashMap<String, String> posConst = new HashMap()<String, String>();
+    HashMap<String, String> negConst = new HashMap()<String, String>();
 
     //DFS components
     Stack<Package> dfsStack = new Stack<>();
@@ -50,10 +50,10 @@ public class Main {
     for (String i : constraints) {
       if (i.charAt(0) == '+') {
         String[] posTemp = i.split("=",2);
-        posConst.put(posTemp(0), posTemp(1));
+        posConst.put(posTemp[0], posTemp[1];
       } else if (i.charAt(1) == '-') {
         String[] negTemp = i.split("=",2);
-        negConst.put(negTemp(0), negTemp(1));
+        negConst.put(negTemp[0], negTemp[1]);
       }
     }
     
