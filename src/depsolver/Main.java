@@ -505,22 +505,22 @@ static List<String> constraintsMa = new ArrayList<>();
             // Less Than
 
             String[] leSplit = q.split("<",2);
-            System.out.println("test");
+           /*  System.out.println("test");
             System.out.println(q);
             System.out.println(leSplit[0] + " " + leSplit[1]);
-
+ */
             
             boolean flag = false;
             
             for (Package pLe : installed) {
-              System.out.println(pLe.getVersion());
+              /* System.out.println(pLe.getVersion());
               System.out.println(leSplit[1]);
-              System.out.println(lex(pLe.getVersion(), leSplit[1]));
+              System.out.println(lex(pLe.getVersion(), leSplit[1])); */
               
               
               if (pLe.getName() == leSplit[0] && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
                 
-                System.out.println(pLe.getName() +  " " + pLe.getVersion());
+                // System.out.println(pLe.getName() +  " " + pLe.getVersion());
                 flag = true;
               }
             }
@@ -576,6 +576,10 @@ static List<String> constraintsMa = new ArrayList<>();
 
     String[] x = v1.split(".");
     String[] y = v2.split(".");
+
+    for (String bit : x) {
+      System.out.println(bit);
+    }
 
     System.out.println("Lex");
     System.out.println(x[0]);
