@@ -573,11 +573,12 @@ static List<String> constraintsMa = new ArrayList<>();
     <0 if v2 is greater
   */
   public static int lex(String v1, String v2) {
+
     String[] x = v1.split(".");
     String[] y = v2.split(".");
 
     System.out.println("Lex");
-    System.out.println("X: " + x.length + " Y: " + y.length);
+    System.out.println("X: " + v1 + " Y: " + v2);
 
 
     if (x.length > y.length) {
