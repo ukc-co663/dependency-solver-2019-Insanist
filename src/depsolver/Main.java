@@ -326,6 +326,12 @@ static List<String> constraintsMa = new ArrayList<>();
   */
   public static boolean isValid(List<Package> installed) {
     //Dependencies Start
+    System.out.println("Testing [ ");
+    for (Package tst : installed) {
+      System.out.print(tst.getName() + ", ");
+    }
+    System.out.print("] ");
+
     for (Package p1 : installed) {
       List<List<String>> deps = new ArrayList<List<String>>();
       if (p1.getDepends() != null) {
