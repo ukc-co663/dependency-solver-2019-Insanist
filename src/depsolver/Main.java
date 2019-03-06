@@ -301,14 +301,14 @@ static List<String> constraintsMa = new ArrayList<>();
         } else {
           List<Package> y = x;
           for (Package p : repo) {
-            
+            System.out.println("search loop");
             if (y.contains(p)) {
               y.remove(p);
             } else {
               y.add(p);
             }
             search(y, repo);
-          }
+            }
           }
         }
 
