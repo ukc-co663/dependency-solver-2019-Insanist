@@ -299,7 +299,7 @@ static List<String> constraintsMa = new ArrayList<>();
           System.out.println("Solution = " + solution);
           solution = x;
         } else {
-          ArrayList<Package> y = new ArrayList<>();
+          List<Package> y = new ArrayList<Package>();
           for (Package p : repo) {
             y = (ArrayList) x.clone();
             System.out.println("search loop");
