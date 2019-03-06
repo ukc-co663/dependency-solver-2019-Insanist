@@ -518,10 +518,10 @@ static List<String> constraintsMa = new ArrayList<>();
               System.out.println(lex(pLe.getVersion(), leSplit[1])); */
               
               
-              if (pLe.getName() == leSplit[0] && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
-                
+              if (pLe.getName() == leSplit[0]) {
+                System.out.println("Lex: " + lex(pLe.getVersion(), leSplit[1]));
                 // System.out.println(pLe.getName() +  " " + pLe.getVersion());
-                flag = true;
+                //flag = true;
               }
             }
             if (flag) {
