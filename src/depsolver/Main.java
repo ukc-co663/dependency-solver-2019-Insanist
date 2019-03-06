@@ -293,7 +293,7 @@ static List<String> constraintsMa = new ArrayList<>();
       if (!seen2.contains(x)) {
 
         seen2.add(x);
-
+        System.out.print("Final check");
         if (isFinal(x)) {
           // Solution found
           System.out.println("Solution = " + solution);
