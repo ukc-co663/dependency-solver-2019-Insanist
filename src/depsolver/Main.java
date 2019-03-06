@@ -285,10 +285,11 @@ static List<String> constraintsMa = new ArrayList<>();
   static boolean solFound = false;
 
   public static void search(List<Package> x, List<Package> repo) {
-    System.out.println("Search");
+    
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
+      System.out.println("Search");
       if (!seen2.contains(x)) {
 
         seen2.add(x);
