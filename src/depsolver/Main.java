@@ -395,9 +395,12 @@ static List<String> constraintsMa = new ArrayList<>();
 
             String[] leSplit = q.split("<",2);
             boolean flag = false;
+            
             for (Package pLe : installed) {
               if (pLe.getName() == leSplit[0] && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
                 flag = true;
+                System.out.println(q);
+                System.out.println(leSplit[0] + " " + leSplit[1 + " " + pLe.getName() +  " " + pLe.getVersion() ]);
               }
             }
             if (!flag) {
