@@ -451,8 +451,8 @@ static List<String> constraintsMa = new ArrayList<>();
         confs = p2.getConflicts();
       }
 
-      for (List<String> clause : confs) {
-        for (String q : clause) {
+      for (String q : confs) {
+        
           if (q.contains(">") && q.contains("=")) {
 
             String[] grEqSplit = q.split(">=",2);
@@ -547,7 +547,7 @@ static List<String> constraintsMa = new ArrayList<>();
             }
           }
         }
-      }
+      
     }
 
     // Conflicts End
