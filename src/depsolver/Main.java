@@ -514,7 +514,9 @@ static List<String> constraintsMa = new ArrayList<>();
             
             for (Package pLe : installed) {
               System.out.println(pLe.getVersion());
+              System.out.println(leSplit[1]);
               System.out.println(lex(pLe.getVersion(), leSplit[1]));
+              
               
               if (pLe.getName() == leSplit[0] && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
                 
