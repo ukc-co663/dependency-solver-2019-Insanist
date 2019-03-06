@@ -503,11 +503,13 @@ static List<String> constraintsMa = new ArrayList<>();
 
           } else if (q.contains("<")) {
             // Less Than
+
+            String[] leSplit = q.split("<",2);
             System.out.println("test");
             System.out.println(q);
             System.out.println(leSplit[0] + " " + leSplit[1]);
 
-            String[] leSplit = q.split("<",2);
+            
             boolean flag = false;
             
             for (Package pLe : installed) {
