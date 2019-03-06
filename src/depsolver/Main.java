@@ -296,7 +296,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
         if (isFinal(x)) {
           // Solution found
-          System.out.println("Search");
+          System.out.println("Solution = " + solution);
           solution = x;
         } else {
           for (Package p : repo) {
