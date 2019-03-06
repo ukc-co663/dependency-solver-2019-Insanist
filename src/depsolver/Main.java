@@ -404,7 +404,7 @@ static List<String> constraintsMa = new ArrayList<>();
             }
           } else if (q.contains("=")) {
             // Equals
-
+            
             String[] eqSplit = q.split("=",2);
             boolean flag = false;
             for (Package pEq : installed) {
@@ -413,10 +413,12 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (!flag) {
+              System.out.println("isValid eq");
               return false;
             }
           } else {
             // Any Version
+            
             boolean flag = false;
             for (Package any : installed) {
               
@@ -426,6 +428,7 @@ static List<String> constraintsMa = new ArrayList<>();
             }
 
             if (!flag) {
+              System.out.println("isValid ANY");
               return false;
             }
           }
@@ -455,6 +458,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
+              System.out.println("isValid conf grEq");
               return false;
             }
 
@@ -475,6 +479,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
+              System.out.println("isValid conf leEq");
               return false;
             }
           } else if (q.contains(">")) {
@@ -487,6 +492,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
+              System.out.println("isValid conf gr");
               return false;
             }
 
@@ -501,6 +507,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
+              System.out.println("isValid conf le");
               return false;
             }
           } else if (q.contains("=")) {
@@ -514,6 +521,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
+              System.out.println("isValid conf eq");
               return false;
             }
           } else {
@@ -527,6 +535,7 @@ static List<String> constraintsMa = new ArrayList<>();
             }
 
             if (flag) {
+              System.out.println("isValid conf any");
               return false;
             }
           }
