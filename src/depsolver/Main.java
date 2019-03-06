@@ -289,14 +289,14 @@ static List<String> constraintsMa = new ArrayList<>();
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
-      System.out.println("Search");
+      System.out.println("Valid");
       if (!seen2.contains(x)) {
 
         seen2.add(x);
 
         if (isFinal(x)) {
           // Solution found
-          
+          System.out.println("Search");
           solution = x;
         } else {
           for (Package p : repo) {
@@ -330,6 +330,8 @@ static List<String> constraintsMa = new ArrayList<>();
       if (p1.getDepends() != null) {
         deps = p1.getDepends();
       }
+
+      System.out.println("Search");
       for (List<String> clause : deps) {
         for (String q : clause) {
           if (q.contains(">") && q.contains("=")) {
