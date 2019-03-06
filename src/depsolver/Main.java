@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Stack;
 
@@ -30,6 +31,7 @@ class Package {
 }
 
 public class Main {
+static List<String> constraintsMa = new ArrayList<>();
   public static void main(String[] args) throws IOException {
     TypeReference<List<Package>> repoType = new TypeReference<List<Package>>() {};
     List<Package> repo = JSON.parseObject(readFile(args[0]), repoType);
@@ -37,9 +39,10 @@ public class Main {
     List<String> initial = JSON.parseObject(readFile(args[1]), strListType);
     List<String> constraints = JSON.parseObject(readFile(args[2]), strListType);
 
+    constraintsMa = constraints;
     // CHANGE CODE BELOW:
     // using repo, initial and constraints, compute a solution and print the answer
-    HashMap<String, String> posConst = new HashMap<String, String>();
+   /*  HashMap<String, String> posConst = new HashMap<String, String>();
     HashMap<String, String> negConst = new HashMap<String, String>();
 
     //DFS components
@@ -59,13 +62,13 @@ public class Main {
         }
       }
 
-    }
+    } */
 
     
     
 
     List<Package> installedPacks = new ArrayList<>();
-    // Add packages from initial to installed HashMap
+    // Add packages from initial to installed List
     for (String init : initial) {
       String[] temp = init.split("=",2);
 
@@ -77,34 +80,241 @@ public class Main {
       }
     }
 
-    String commands = "[";
-
-
-
-    commands += "]";
     
-    System.out.println(commands);
+    //System.out.println(commands);
+
+    search(installedPacks, repo);
+
+    System.out.println(solution);
   }
 
-  static boolean isFinal(List<Package> installed, HashMap<String, String> positives, HashMap<String, String> negatives) {
+  static boolean isFinal(List<Package> installed) {
     
     //TODO: Complete isFinal method
+    // 1. Iterate over constraints list
+    // 2. Split on comparison operators (branches for each combo)
+    // 3. .
+    List<String> constr = constraintsMa;
+    for (String s : constr) {
+      String c = "";
+      if (s.charAt(0) == '+') { // Positive constraint
+        c = s.substring(1);
+        if (c.contains(">") && c.contains("=")) {
 
-    return null;
+          String[] grEqSplit = c.split(">=",2);
+          boolean flag = false;
+          for (Package pGrEq : installed) {
+            if (pGrEq.getName() == grEqSplit[0] && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
+              flag = true;
+            }
+          }
+          if (!flag) {
+            return false;
+          }
+
+          // Greater than or Equal To
+          // 1. Split into Package name and version
+          // 2. Loop through all installed packages
+          // 3. Find version name and check for correct version with compareTo()
+          // 4. If found set local oolean to true and continue looping
+          // 5. If not found immediately return FALSE overall
+
+        } else if (c.contains("<") && c.contains("=")) {
+          // Less Than or Equal To
+          
+          String[] leEqSplit = c.split(">=",2);
+          boolean flag = false;
+          for (Package pGrEq : installed) {
+            if (pGrEq.getName() == leEqSplit[0] && lex(pGrEq.getVersion(), leEqSplit[1]) >= 0  ) {
+              flag = true;
+            }
+          }
+          if (!flag) {
+            return false;
+          }
+        } else if (q.contains(">")) {
+          // Greater Than
+          
+          String[] grSplit = c.split(">=",2);
+          boolean flag = false;
+          for (Package pGrEq : installed) {
+            if (pGrEq.getName() == grSplit[0] && lex(pGrEq.getVersion(), grSplit[1]) >= 0  ) {
+              flag = true;
+            }
+          }
+          if (!flag) {
+            return false;
+          }
+        } else if (q.contains("<")) {
+          // Less Than
+
+          String[] leSplit = c.split(">=",2);
+          boolean flag = false;
+          for (Package pGrEq : installed) {
+            if (pGrEq.getName() == leSplit[0] && lex(pGrEq.getVersion(), leSplit[1]) >= 0  ) {
+              flag = true;
+            }
+          }
+          if (!flag) {
+            return false;
+          }
+        } else if (q.contains("=")) {
+          // Equals
+          String[] eqSplit = c.split(">=",2);
+          boolean flag = false;
+          for (Package pGrEq : installed) {
+            if (pGrEq.getName() == eqSplit[0] && lex(pGrEq.getVersion(), eqSplit[1]) >= 0  ) {
+              flag = true;
+            }
+          }
+          if (!flag) {
+            return false;
+          }
+        } else {
+          // Any Version
+          for (Package any : installed) {
+            boolean flag = false;
+            if (any.getName() == q){
+              flag = true;
+            }
+          }
+
+          if (!flag) {
+            return false;
+          }
+        }
+
+      } else if (s.charAt(0) == '-') { // Negative constraint
+        c = s.substring(1);
+        if (c.contains(">") && c.contains("=")) {
+
+          String[] grEqSplit = c.split(">=",2);
+          boolean flag = false;
+          for (Package pGrEq : installed) {
+            if (pGrEq.getName() == grEqSplit[0] && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
+              flag = true;
+            }
+          }
+          if (flag) {
+            return false;
+          }
+
+          // Greater than or Equal To
+          // 1. Split into Package name and version
+          // 2. Loop through all installed packages
+          // 3. Find version name and check for correct version with compareTo()
+          // 4. If found set local oolean to true and continue looping
+          // 5. If not found immediately return FALSE overall
+
+        } else if (c.contains("<") && c.contains("=")) {
+          // Less Than or Equal To
+          String[] leEqSplit = c.split("<=",2);
+          boolean flag = false;
+          for (Package pLeEq : installed) {
+            if (pLeEq.getName() == leEqSplit[0] && lex(pLeEq.getVersion(), leEqSplit[1]) <= 0  ) {
+              flag = true;
+            }
+          }
+          if (flag) {
+            return false;
+          }
+        } else if (c.contains(">")) {
+          // Greater Than
+          String[] grSplit = c.split("<=",2);
+          boolean flag = false;
+          for (Package pGr : installed) {
+            if (pGr.getName() == grSplit[0] && lex(pGr.getVersion(), grSplit[1]) > 0  ) {
+              flag = true;
+            }
+          }
+          if (flag) {
+            return false;
+          }
+
+        } else if (c.contains("<")) {
+          // Less Than
+
+          String[] leSplit = c.split("<=",2);
+          boolean flag = false;
+          for (Package pLe : installed) {
+            if (pLe.getName() == leSplit[0] && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
+              flag = true;
+            }
+          }
+          if (flag) {
+            return false;
+          }
+        } else if (c.contains("=")) {
+          // Equals
+
+          String[] eqSplit = c.split("<=",2);
+          boolean flag = false;
+          for (Package pEq : installed) {
+            if (pEq.getName() == eqSplit[0] && lex(pEq.getVersion(), eqSplit[1]) == 0  ) {
+              flag = true;
+            }
+          }
+          if (flag) {
+            return false;
+          }
+        } else {
+          // Any Version
+          for (Package any : installed) {
+            boolean flag = false;
+            if (any.getName() == c){
+              flag = true;
+            }
+          }
+
+          if (flag) {
+            return false;
+          }
+        }
+      }
+    }
+
+    return true;
 
   }
 
-  public static List<Package> search(List<Package> starting) {
+  
+  static HashSet<E> seen2 = new HashSet();
+  static List<Package> solution = new ArrayList();
+  static boolean solFound = false;
 
-    List<Package> seen = new ArrayList<>();
+  public static void search(List<Package> x, List<Package> repo) {
+    if (!solFound) {
+      // TODO: Complete search method as per Piazza
+    if (isValid(x)) {
+      if (!seen2.contains(x)) {
 
-    // TODO: Complete search method as per Piazza
+        seen2.add(x);
 
-    return null;
+        if (isFinal(x)) {
+          // Solution found
+          solution = x;
+        }
+
+      }
+    }
+    
+    
+    for (Package p : repo) {
+      List<Package> y = x;
+      if (y.contains(p)) {
+        y.remove(p);
+      } else {
+        y.add(p);
+      }
+      search(y, repo);
+    }
+    }
+    
   }
 
   /*
     isValid takes a package list and checks all dependencies and conflicts are met.
+    @Returns: True if all deps and confs are met, false in any other case
   */
   public static boolean isValid(List<Package> installed) {
     //Dependencies Start
@@ -188,6 +398,7 @@ public class Main {
             }
           } else {
             // Any Version
+             
             for (Package any : installed) {
               boolean flag = false;
               if (any.getName() == q){
