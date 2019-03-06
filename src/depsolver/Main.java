@@ -458,7 +458,7 @@ static List<String> constraintsMa = new ArrayList<>();
             String[] grEqSplit = q.split(">=",2);
             boolean flag = false;
             for (Package pGrEq : installed) {
-              if (pGrEq.getName() == grEqSplit[0] && lex(pGrEq.getVersion(), grEqSplit[1]) <= 0  ) {
+              if (pGrEq.getName() == grEqSplit[0] && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
                 flag = true;
               }
             }
@@ -479,7 +479,7 @@ static List<String> constraintsMa = new ArrayList<>();
             String[] leEqSplit = q.split("<=",2);
             boolean flag = false;
             for (Package pLeEq : installed) {
-              if (pLeEq.getName() == leEqSplit[0] && lex(pLeEq.getVersion(), leEqSplit[1]) >= 0  ) {
+              if (pLeEq.getName() == leEqSplit[0] && lex(pLeEq.getVersion(), leEqSplit[1]) <= 0  ) {
                 flag = true;
               }
             }
@@ -492,7 +492,7 @@ static List<String> constraintsMa = new ArrayList<>();
             String[] grSplit = q.split(">",2);
             boolean flag = false;
             for (Package pGr : installed) {
-              if (pGr.getName() == grSplit[0] && lex(pGr.getVersion(), grSplit[1]) < 0  ) {
+              if (pGr.getName() == grSplit[0] && lex(pGr.getVersion(), grSplit[1]) > 0  ) {
                 flag = true;
               }
             }
@@ -513,7 +513,7 @@ static List<String> constraintsMa = new ArrayList<>();
             boolean flag = false;
             
             for (Package pLe : installed) {
-              if (pLe.getName() == leSplit[0] && lex(pLe.getVersion(), leSplit[1]) > 0  ) {
+              if (pLe.getName() == leSplit[0] && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
                 
                 System.out.println(pLe.getName() +  " " + pLe.getVersion());
                 flag = true;
