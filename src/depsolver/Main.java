@@ -299,10 +299,10 @@ static List<String> constraintsMa = new ArrayList<>();
           System.out.println("Solution = " + solution);
           solution = x;
         } else {
-          
+          System.out.println("search loop");
           for (Package p : repo) {
             List<Package> y = new ArrayList<Package>(x);
-            System.out.println("search loop");
+            
             if (y.contains(p)) {
               y.remove(p);
             } else {
@@ -348,6 +348,7 @@ static List<String> constraintsMa = new ArrayList<>();
             String[] grEqSplit = q.split(">=",2);
             boolean flag = false;
             for (Package pGrEq : installed) {
+              System.out.println(grEqSplit[0] + " " + pGrEq.getName());
               if (pGrEq.getName().equals(grEqSplit[0]) && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
                 flag = true;
               }
