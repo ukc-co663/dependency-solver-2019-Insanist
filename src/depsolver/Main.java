@@ -347,6 +347,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
             String[] grEqSplit = q.split(">=",2);
             boolean flag = false;
+            System.out.println(p1.getName() + " " + p1.getVersion() + " " + q);
             for (Package pGrEq : installed) {
               System.out.println(grEqSplit[0] + " " + pGrEq.getName());
               if (pGrEq.getName().equals(grEqSplit[0]) && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
