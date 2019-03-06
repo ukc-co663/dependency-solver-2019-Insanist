@@ -504,12 +504,16 @@ static List<String> constraintsMa = new ArrayList<>();
           } else if (q.contains("<")) {
             // Less Than
             System.out.println("test");
+            System.out.println(q);
+            System.out.println(leSplit[0] + " " + leSplit[1]);
+
             String[] leSplit = q.split("<",2);
             boolean flag = false;
+            
             for (Package pLe : installed) {
               if (pLe.getName() == leSplit[0] && lex(pLe.getVersion(), leSplit[1]) > 0  ) {
-                System.out.println(q);
-                System.out.println(leSplit[0] + " " + leSplit[1] + " " + pLe.getName() +  " " + pLe.getVersion());
+                
+                System.out.println(pLe.getName() +  " " + pLe.getVersion());
                 flag = true;
               }
             }
