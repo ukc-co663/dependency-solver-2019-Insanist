@@ -400,9 +400,9 @@ static List<String> constraintsMa = new ArrayList<>();
             }
           } else {
             // Any Version
-             
+            boolean flag = false;
             for (Package any : installed) {
-              boolean flag = false;
+              
               if (any.getName() == q){
                 flag = true;
               }
@@ -501,8 +501,9 @@ static List<String> constraintsMa = new ArrayList<>();
             }
           } else {
             // Any Version
+            boolean flag = false;
             for (Package any : installed) {
-              boolean flag = false;
+              
               if (any.getName() == q){
                 flag = true;
               }
