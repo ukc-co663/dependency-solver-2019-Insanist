@@ -132,7 +132,7 @@ static List<String> constraintsMa = new ArrayList<>();
           if (!flag) {
             return false;
           }
-        } else if (q.contains(">")) {
+        } else if (c.contains(">")) {
           // Greater Than
           
           String[] grSplit = c.split(">=",2);
@@ -145,7 +145,7 @@ static List<String> constraintsMa = new ArrayList<>();
           if (!flag) {
             return false;
           }
-        } else if (q.contains("<")) {
+        } else if (c.contains("<")) {
           // Less Than
 
           String[] leSplit = c.split(">=",2);
@@ -158,7 +158,7 @@ static List<String> constraintsMa = new ArrayList<>();
           if (!flag) {
             return false;
           }
-        } else if (q.contains("=")) {
+        } else if (c.contains("=")) {
           // Equals
           String[] eqSplit = c.split(">=",2);
           boolean flag = false;
@@ -172,9 +172,10 @@ static List<String> constraintsMa = new ArrayList<>();
           }
         } else {
           // Any Version
+          boolean flag = false;
           for (Package any : installed) {
-            boolean flag = false;
-            if (any.getName() == q){
+            
+            if (any.getName() == c){
               flag = true;
             }
           }
@@ -259,8 +260,9 @@ static List<String> constraintsMa = new ArrayList<>();
           }
         } else {
           // Any Version
+          boolean flag = false;
           for (Package any : installed) {
-            boolean flag = false;
+            
             if (any.getName() == c){
               flag = true;
             }
@@ -278,7 +280,7 @@ static List<String> constraintsMa = new ArrayList<>();
   }
 
   
-  static HashSet<E> seen2 = new HashSet();
+  static HashSet<List<Package>> seen2 = new HashSet();
   static List<Package> solution = new ArrayList();
   static boolean solFound = false;
 
