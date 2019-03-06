@@ -447,8 +447,8 @@ static List<String> constraintsMa = new ArrayList<>();
     for (Package p2 : installed) {
 
       List<List<String>> confs = new ArrayList<List<String>>();
-      if (p2.getDepends() != null) {
-        confs = p2.getDepends();
+      if (p2.getConflicts() != null) {
+        confs = p2.getConflicts();
       }
 
       for (List<String> clause : confs) {
