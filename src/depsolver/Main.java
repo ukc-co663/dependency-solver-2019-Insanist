@@ -518,7 +518,7 @@ static List<String> constraintsMa = new ArrayList<>();
               System.out.println(pLe.getName());
               //System.out.println(lex(pLe.getVersion(), leSplit[1]));
               
-              System.out.println(leSplit[0] == pLe.getName());
+              System.out.println(leSplit[0].equals(pLe.getName()));
               if (pLe.getName() == leSplit[0]) {
                 System.out.println("Lex: " + lex(pLe.getVersion(), leSplit[1]));
                 // System.out.println(pLe.getName() +  " " + pLe.getVersion());
