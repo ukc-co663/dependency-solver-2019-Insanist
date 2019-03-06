@@ -295,22 +295,24 @@ static List<String> constraintsMa = new ArrayList<>();
         if (isFinal(x)) {
           // Solution found
           solution = x;
+        } else {
+          for (Package p : repo) {
+            List<Package> y = x;
+            if (y.contains(p)) {
+              y.remove(p);
+            } else {
+              y.add(p);
+            }
+            search(y, repo);
+          }
+          }
         }
 
       }
     }
     
     
-    for (Package p : repo) {
-      List<Package> y = x;
-      if (y.contains(p)) {
-        y.remove(p);
-      } else {
-        y.add(p);
-      }
-      search(y, repo);
-    }
-    }
+    
     
   }
 
