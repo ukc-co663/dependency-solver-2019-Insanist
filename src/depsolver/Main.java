@@ -289,13 +289,14 @@ static List<String> constraintsMa = new ArrayList<>();
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
-      System.out.println("Search");
+      
       if (!seen2.contains(x)) {
 
         seen2.add(x);
 
         if (isFinal(x)) {
           // Solution found
+          System.out.println("solution found");
           solution = x;
         } else {
           for (Package p : repo) {
