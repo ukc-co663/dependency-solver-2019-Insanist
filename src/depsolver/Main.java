@@ -184,7 +184,7 @@ static List<String> constraintsMa = new ArrayList<>();
             return false;
           }
         }
-
+        System.out.println("Positive constraints are final");
       } else if (s.charAt(0) == '-') { // Negative constraint
         c = s.substring(1);
         if (c.contains(">") && c.contains("=")) {
@@ -274,7 +274,7 @@ static List<String> constraintsMa = new ArrayList<>();
         }
       }
     }
-
+    System.out.println("Negative constraints are final");
     return true;
 
   }
@@ -441,7 +441,7 @@ static List<String> constraintsMa = new ArrayList<>();
       }
     }
     // Dependencies end
-
+    System.out.println("Dependencies valid");
     // Conflicts Start
 
     for (Package p2 : installed) {
@@ -562,7 +562,7 @@ static List<String> constraintsMa = new ArrayList<>();
     }
 
     // Conflicts End
-
+    System.out.println("Conflicts valid");
     return true;
   }
 
