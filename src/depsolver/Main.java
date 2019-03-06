@@ -299,9 +299,9 @@ static List<String> constraintsMa = new ArrayList<>();
           System.out.println("Solution = " + solution);
           solution = x;
         } else {
-          List<Package> y = new ArrayList<Package>();
+          
           for (Package p : repo) {
-            y = (ArrayList) x.clone();
+            List<Package> y = new ArrayList<Package>(x);
             System.out.println("search loop");
             if (y.contains(p)) {
               y.remove(p);
