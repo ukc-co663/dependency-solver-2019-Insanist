@@ -578,7 +578,7 @@ static List<String> constraintsMa = new ArrayList<>();
     String[] y = v2.split(".");
 
     System.out.println("Lex");
-    System.out.println("X: " + v1 + " Y: " + v2);
+    System.out.println(x[0]);
 
 
     if (x.length > y.length) {
