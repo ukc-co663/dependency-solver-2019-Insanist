@@ -576,6 +576,10 @@ static List<String> constraintsMa = new ArrayList<>();
     String[] x = v1.split(".");
     String[] y = v2.split(".");
 
+    System.out.println("Lex");
+    System.out.println("X: " + x.length + " Y: " + y.length);
+
+
     if (x.length > y.length) {
       for (int i = 0; i < y.length; i ++) {
         if (Integer.parseInt(x[i]) > Integer.parseInt(y[i])) {
@@ -595,7 +599,7 @@ static List<String> constraintsMa = new ArrayList<>();
       }
       return -1;
       
-    } else {
+    } else if (x.length == y.length) {
       for (int i = 0; i < y.length; i ++) {
         if (Integer.parseInt(x[i]) > Integer.parseInt(y[i])) {
           return 1;
