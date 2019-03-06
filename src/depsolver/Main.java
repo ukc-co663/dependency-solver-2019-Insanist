@@ -574,15 +574,12 @@ static List<String> constraintsMa = new ArrayList<>();
   */
   public static int lex(String v1, String v2) {
 
-    String[] x = v1.split(".");
-    String[] y = v2.split(".");
+    String[] x = v1.split("\\.");
+    String[] y = v2.split("\\.");
 
-    for (String bit : x) {
+ /*    for (String bit : x) {
       System.out.println(bit);
-    }
-
-    System.out.println("Lex");
-    System.out.println(x[0]);
+    } */
 
 
     if (x.length > y.length) {
