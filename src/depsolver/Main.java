@@ -462,7 +462,7 @@ static List<String> constraintsMa = new ArrayList<>();
               return false;
             } */
           }
-        }
+        } // why
         if (!isClauseValid) {
           return false;
         }
