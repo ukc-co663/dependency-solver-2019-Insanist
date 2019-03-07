@@ -478,7 +478,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package pGrEq : installed) {
               if (pGrEq.getName().equals(grEqSplit[0]) && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
                 flag = true;
-                isClauseValid = true;
+                
               }
             }
             /* if (flag) {
@@ -500,7 +500,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package pLeEq : installed) {
               if (pLeEq.getName().equals(leEqSplit[0]) && lex(pLeEq.getVersion(), leEqSplit[1]) <= 0  ) {
                 flag = true;
-                isClauseValid = true;
+                
               }
             }
             /* if (flag) {
@@ -514,7 +514,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package pGr : installed) {
               if (pGr.getName().equals(grSplit[0]) && lex(pGr.getVersion(), grSplit[1]) > 0  ) {
                 flag = true;
-                isClauseValid = true;
+                
               }
             }
             /* if (flag) {
@@ -543,7 +543,7 @@ static List<String> constraintsMa = new ArrayList<>();
               if (pLe.getName().equals(leSplit[0]) && lex(pLe.getVersion(), leSplit[1]) < 0) {
                 // System.out.println(pLe.getName() +  " " + pLe.getVersion());
                 flag = true;
-                isClauseValid = true;
+                
               }
             }
             /* if (flag) {
@@ -558,7 +558,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package pEq : installed) {
               if (pEq.getName().equals(eqSplit[0]) && lex(pEq.getVersion(), eqSplit[1]) == 0  ) {
                 flag = true;
-                isClauseValid = true;
+                
               }
             }
             /* if (flag) {
@@ -572,7 +572,7 @@ static List<String> constraintsMa = new ArrayList<>();
               
               if (any.getName().equals(q)) {
                 flag = true;
-                isClauseValid = true;
+                
               }
             }
 
