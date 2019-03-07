@@ -463,11 +463,12 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
           }
         }
+        if (!isClauseValid) {
+          return false;
+        }
       }
 
-      if (!isClauseValid) {
-        return false;
-      }
+      
 
     }
     // Dependencies end
