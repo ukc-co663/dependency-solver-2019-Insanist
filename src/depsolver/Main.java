@@ -296,7 +296,10 @@ static List<String> constraintsMa = new ArrayList<>();
         System.out.print("Final check");
         if (isFinal(x)) {
           // Solution found
-          System.out.println("Solution = " + solution);
+          System.out.println("Solution = ");
+          for (Package p : x) {
+            System.out.println(p.getName() + " " + p.getVersion());
+          }
           solFound = true;
           solution = x;
         } else {
