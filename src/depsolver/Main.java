@@ -358,10 +358,10 @@ static List<String> constraintsMa = new ArrayList<>();
       
       for (List<String> clause : deps) {
         
-        
+        boolean isDepClauseValid = true;
         for (String q : clause) {
-         // isDepClauseValid = false; // valid
-         boolean isDepClauseValid = false;
+          isDepClauseValid = false; // valid
+         
           if (q.contains(">") && q.contains("=")) {
 
             String[] grEqSplit = q.split(">=",2);
