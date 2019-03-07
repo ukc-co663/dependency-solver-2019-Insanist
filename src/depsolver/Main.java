@@ -348,9 +348,9 @@ static List<String> constraintsMa = new ArrayList<>();
     System.out.print("] ");
 
     for (Package p1 : installed) {
-      List<List<String>> deps = new ArrayList<List<String>>();
+      
       if (p1.getDepends() != null) {
-        deps = p1.getDepends();
+        List<List<String>> deps = new ArrayList<List<String>>(p1.getDepends());
       }
       
       
@@ -478,9 +478,9 @@ static List<String> constraintsMa = new ArrayList<>();
 
     for (Package p2 : installed) {
 
-      List<String> confs = new ArrayList<String>();
+      
       if (p2.getConflicts() != null) {
-        confs = p2.getConflicts();
+        List<String> confs = new ArrayList<String>( p2.getConflicts());
       }
 
       for (String q : confs) {
