@@ -357,10 +357,10 @@ static List<String> constraintsMa = new ArrayList<>();
       
       
       for (List<String> clause : deps) {
-        boolean isClauseValid = true;
+        boolean isClauseValid = false;
         
         for (String q : clause) {
-          isClauseValid = false; // valid
+         // isClauseValid = false; // valid
 
           if (q.contains(">") && q.contains("=")) {
 
@@ -465,7 +465,7 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
           }
         } // why1
-        System.out.println("Clause valid check");
+        System.out.println("Clause valid check " + isClauseValid);
         if (!isClauseValid) {
           return false;
         }
