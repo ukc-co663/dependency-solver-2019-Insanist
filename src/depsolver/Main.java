@@ -65,7 +65,16 @@ static List<String> constraintsMa = new ArrayList<>();
     } */
 
     
-    
+    ArrayList<Package> finalTest = new ArrayList<Package>();
+    finalTest.add(repo.get(3));
+    finalTest.add(repo.get(4));
+    finalTest.add(repo.get(0));
+    System.out.println("FinalTest");
+    for (Package p : finalTest) {
+      System.out.println(p.getName() + " " + p.getVersion());
+    }
+    System.out.println("Final Test Result: " + isFinal(finalTest));
+
 
     List<Package> installedPacks = new ArrayList<>();
     // Add packages from initial to installed List
