@@ -357,11 +357,11 @@ static List<String> constraintsMa = new ArrayList<>();
       
       
       for (List<String> clause : deps) {
-        boolean isClauseValid = false;
+        
         
         for (String q : clause) {
-         // isClauseValid = false; // valid
-
+         // isDepClauseValid = false; // valid
+         boolean isDepClauseValid = false;
           if (q.contains(">") && q.contains("=")) {
 
             String[] grEqSplit = q.split(">=",2);
@@ -371,7 +371,7 @@ static List<String> constraintsMa = new ArrayList<>();
               System.out.println(grEqSplit[0] + " " + pGrEq.getName());
               if (pGrEq.getName().equals(grEqSplit[0]) && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
                 flag = true;
-                isClauseValid = true;
+                isDepClauseValid = true;
               }
             }
             /* if (!flag) {
@@ -393,7 +393,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package pLeEq : installed) {
               if (pLeEq.getName().equals(leEqSplit[0]) && lex(pLeEq.getVersion(), leEqSplit[1]) <= 0  ) {
                 flag = true;
-                isClauseValid = true;
+                isDepClauseValid = true;
               }
             }
             /* if (!flag) {
@@ -407,7 +407,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package pGr : installed) {
               if (pGr.getName().equals(grSplit[0]) && lex(pGr.getVersion(), grSplit[1]) > 0  ) {
                 flag = true;
-                isClauseValid = true;
+                isDepClauseValid = true;
               }
             }
             /* if (!flag) {
@@ -423,7 +423,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package pLe : installed) {
               if (pLe.getName().equals(leSplit[0]) && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
                 flag = true;
-                isClauseValid = true;
+                isDepClauseValid = true;
                 System.out.println(q);
                 System.out.println(leSplit[0] + " " + leSplit[1] + " " + pLe.getName() +  " " + pLe.getVersion());
               }
@@ -440,7 +440,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package pEq : installed) {
               if (pEq.getName().equals(eqSplit[0]) && lex(pEq.getVersion(), eqSplit[1]) == 0  ) {
                 flag = true;
-                isClauseValid = true;
+                isDepClauseValid = true;
               }
             }
             /* if (!flag) {
@@ -455,7 +455,7 @@ static List<String> constraintsMa = new ArrayList<>();
               
               if (any.getName().equals(q)){
                 flag = true;
-                isClauseValid = true;
+                isDepClauseValid = true;
               }
             }
 
@@ -465,8 +465,8 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
           }
         } // why1
-        System.out.println("Clause valid check " + isClauseValid);
-        if (!isClauseValid) {
+        System.out.println("Clause valid check " + isDepClauseValid);
+        if (!isDepClauseValid) {
           return false;
         }
       }
@@ -499,10 +499,10 @@ static List<String> constraintsMa = new ArrayList<>();
                 
               }
             }
-            /* if (flag) {
+            if (flag) {
               System.out.println("isValid conf grEq");
               return false;
-            } */
+            }
 
             // Greater than or Equal To
             // 1. Split into Package name and version
@@ -521,10 +521,10 @@ static List<String> constraintsMa = new ArrayList<>();
                 
               }
             }
-            /* if (flag) {
+            if (flag) {
               System.out.println("isValid conf leEq");
               return false;
-            } */
+            }
           } else if (q.contains(">")) {
             // Greater Than
             String[] grSplit = q.split(">",2);
@@ -535,10 +535,10 @@ static List<String> constraintsMa = new ArrayList<>();
                 
               }
             }
-            /* if (flag) {
+            if (flag) {
               System.out.println("isValid conf gr");
               return false;
-            } */
+            }
 
           } else if (q.contains("<")) {
             // Less Than
@@ -564,10 +564,10 @@ static List<String> constraintsMa = new ArrayList<>();
                 
               }
             }
-            /* if (flag) {
+            if (flag) {
               System.out.println("isValid conf le");
               return false;
-            } */
+            }
           } else if (q.contains("=")) {
             // Equals
 
@@ -579,10 +579,10 @@ static List<String> constraintsMa = new ArrayList<>();
                 
               }
             }
-            /* if (flag) {
+            if (flag) {
               System.out.println("isValid conf eq");
               return false;
-            } */
+            }
           } else {
             // Any Version
             boolean flag = false;
@@ -594,10 +594,10 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
 
-            /* if (flag) {
+            if (flag) {
               System.out.println("isValid conf any");
               return false;
-            } */
+            }
           }
         }
       
