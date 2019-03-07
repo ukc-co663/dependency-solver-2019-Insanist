@@ -463,6 +463,7 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
           }
         } // why1
+        System.out.println("Clause valid check");
         if (!isClauseValid) {
           return false;
         }
