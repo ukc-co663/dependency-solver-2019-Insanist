@@ -358,7 +358,7 @@ static List<String> constraintsMa = new ArrayList<>();
         
         
         for (String q : clause) {
-          isClauseValid = false;
+          isClauseValid = false; // valid
 
           if (q.contains(">") && q.contains("=")) {
 
