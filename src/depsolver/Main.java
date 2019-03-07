@@ -340,11 +340,11 @@ static List<String> constraintsMa = new ArrayList<>();
       if (p1.getDepends() != null) {
         deps = p1.getDepends();
       }
-
+      boolean isClauseValid = true;
       
       for (List<String> clause : deps) {
         
-        boolean isClauseValid = false;
+        isClauseValid = false;
         for (String q : clause) {
           
 
