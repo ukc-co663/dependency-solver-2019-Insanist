@@ -320,11 +320,11 @@ static List<String> constraintsMa = new ArrayList<>();
             
             if (y.contains(p)) {
               y.remove(p);
-              tempCmds += "-" + p.getName() + "=" + getVersion();
+              tempCmds += "-" + p.getName() + "=" + p.getVersion();
               search(y, repo, tempCmds);
             } else {
               y.add(p);
-              tempCmds += "+" + p.getName() + "=" + getVersion();
+              tempCmds += "+" + p.getName() + "=" + p.getVersion();
               search(y, repo, tempCmds);
             }
             
