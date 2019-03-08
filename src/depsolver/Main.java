@@ -92,9 +92,9 @@ static List<String> constraintsMa = new ArrayList<>();
     
     //System.out.println(commands);
 
-    search(installedPacks, repo);
+    search(installedPacks, repo, "");
 
-    System.out.println(solution);
+    System.out.println("Final cmds: " + finalCmds);
   }
 
   static boolean isFinal(List<Package> installed) {
@@ -292,9 +292,10 @@ static List<String> constraintsMa = new ArrayList<>();
   static HashSet<List<Package>> seen2 = new HashSet();
   static List<Package> solution = new ArrayList();
   static boolean solFound = false;
+  static String finalCmds = "[";
 
-  public static void search(List<Package> x, List<Package> repo) {
-    
+  public static void search(List<Package> x, List<Package> repo, String cmds) {
+    String tempCmds = cmds;
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
@@ -309,6 +310,7 @@ static List<String> constraintsMa = new ArrayList<>();
           for (Package p : x) {
             System.out.println(p.getName() + " " + p.getVersion());
           }
+          finalCmds += tempCmds + "]";
           solFound = true;
           solution = x;
         } else {
@@ -318,10 +320,14 @@ static List<String> constraintsMa = new ArrayList<>();
             
             if (y.contains(p)) {
               y.remove(p);
+              tempCmds += "-" + p.getName() + "=" + getVersion();
+              search(y, repo, tempCmds);
             } else {
               y.add(p);
+              tempCmds += "+" + p.getName() + "=" + getVersion();
+              search(y, repo, tempCmds);
             }
-            search(y, repo);
+            
             }
           }
         }
