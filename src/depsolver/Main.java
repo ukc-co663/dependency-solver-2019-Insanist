@@ -65,7 +65,7 @@ static List<String> constraintsMa = new ArrayList<>();
     } */
 
     
-    ArrayList<Package> finalTest = new ArrayList<Package>();
+/*     ArrayList<Package> finalTest = new ArrayList<Package>();
     finalTest.add(repo.get(3));
     finalTest.add(repo.get(4));
     finalTest.add(repo.get(0));
@@ -73,7 +73,7 @@ static List<String> constraintsMa = new ArrayList<>();
     for (Package p : finalTest) {
       System.out.println(p.getName() + " " + p.getVersion());
     }
-    System.out.println("Final Test Result: " + isFinal(finalTest));
+    System.out.println("Final Test Result: " + isFinal(finalTest)); */
 
 
     List<Package> installedPacks = new ArrayList<>();
@@ -320,12 +320,13 @@ static List<String> constraintsMa = new ArrayList<>();
             
             if (y.contains(p)) {
               y.remove(p);
-              tempCmds += "-" + p.getName() + "=" + p.getVersion();
-              search(y, repo, tempCmds);
+              String minusCmds = tempCmds + "-" + p.getName() + "=" + p.getVersion(); 
+              
+              search(y, repo, minusCmds);
             } else {
               y.add(p);
-              tempCmds += "+" + p.getName() + "=" + p.getVersion();
-              search(y, repo, tempCmds);
+              String plusCmds = tempCmds + "+" + p.getName() + "=" + p.getVersion();
+              search(y, repo, plusCmds);
             }
             
             }
