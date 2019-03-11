@@ -290,13 +290,13 @@ static List<String> constraintsMa = new ArrayList<>();
 
   
   static HashSet<ArrayList<Package>> seen2 = new HashSet();
-  static List<Package> solution = new ArrayList();
+  static ArrayList<Package> solution = new ArrayList();
   static boolean solFound = false;
   
 
 
   public static HashSet<String> search(ArrayList<Package> x, List<Package> repo, HashSet<String> cmds) {
-    HashSet tempCmds = new HashSet<String>(cmds);
+    HashSet<String> tempCmds = new HashSet<String>(cmds);
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
