@@ -292,10 +292,10 @@ static List<String> constraintsMa = new ArrayList<>();
   static HashSet<ArrayList<Package>> seen2 = new HashSet();
   static ArrayList<Package> solution = new ArrayList();
   static boolean solFound = false;
-  
+  static HashSet<String> finalCmds = new HashSet<String>();
 
 
-  public static HashSet<String> search(ArrayList<Package> x, List<Package> repo, HashSet<String> cmds) {
+  public static void search(ArrayList<Package> x, List<Package> repo, HashSet<String> cmds) {
     HashSet<String> tempCmds = new HashSet<String>(cmds);
     if (!solFound) {
       // TODO: Complete search method as per Piazza
@@ -329,7 +329,7 @@ static List<String> constraintsMa = new ArrayList<>();
           for (Package p : x) {
             System.out.println(p.getName() + " " + p.getVersion());
           }
-          HashSet<String> finalCmds = new HashSet<String>();
+          
 
           for (String s : tempCmds) {
             finalCmds.add(s);
@@ -338,9 +338,9 @@ static List<String> constraintsMa = new ArrayList<>();
           
           finalCmds.add("]");
           solFound = true;
-          solution = x.clone();
+          solution = x;
 
-          return finalCmds;
+         
 
         } else {
           System.out.println("Not Final");
