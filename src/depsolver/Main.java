@@ -91,8 +91,8 @@ static List<String> constraintsMa = new ArrayList<>();
 
     
     //System.out.println(commands);
-
-    search(installedPacks, repo, "");
+    HashSet<String> emptyCmds = new HashSet<String>();
+    search(installedPacks, repo, emptyCmds);
 
     System.out.println("Final cmds: " + finalCmds);
   }
@@ -292,10 +292,11 @@ static List<String> constraintsMa = new ArrayList<>();
   static HashSet<ArrayList<Package>> seen2 = new HashSet();
   static List<Package> solution = new ArrayList();
   static boolean solFound = false;
-  static String finalCmds = "[";
+  static HashSet<String> finalCmds = new HashSet<String>();
 
-  public static void search(ArrayList<Package> x, List<Package> repo, String cmds) {
-    String tempCmds = cmds;
+
+  public static void search(ArrayList<Package> x, List<Package> repo, HashSet<String> cmds) {
+    HashSet tempCmds = new HashSet<String>(cmds);
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
@@ -328,7 +329,13 @@ static List<String> constraintsMa = new ArrayList<>();
           for (Package p : x) {
             System.out.println(p.getName() + " " + p.getVersion());
           }
-          finalCmds += tempCmds + "]";
+
+          for (String s : tempCmds) {
+            finalCmds.add(s);
+          }
+
+          
+          finalCmds.add("");
           solFound = true;
           solution = x;
         } else {
@@ -338,13 +345,18 @@ static List<String> constraintsMa = new ArrayList<>();
             ArrayList<Package> y = new ArrayList<Package>(x);
             
             if (y.contains(p)) {
+              System.out.println("Add");
               y.remove(p);
-              String minusCmds = tempCmds + "-" + p.getName() + "=" + p.getVersion(); 
-              
+              HashSet<String> minusCmds = new HashSet<String>(tempCmds);
+              String minusPkg = "-" + p.getName() + "=" + p.getVersion();
+              minusCmds.add(minusPkg);
               search(y, repo, minusCmds);
             } else {
+              System.out.println("Remove");
               y.add(p);
-              String plusCmds = tempCmds + "+" + p.getName() + "=" + p.getVersion();
+              HashSet<String> plusCmds = new HashSet<String>(tempCmds);
+              String plusPkg = "+" + p.getName() + "=" + p.getVersion();
+              plusCmds.add(plusPkg);
               search(y, repo, plusCmds);
             }
             
