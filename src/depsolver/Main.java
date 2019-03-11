@@ -76,7 +76,7 @@ static List<String> constraintsMa = new ArrayList<>();
     System.out.println("Final Test Result: " + isFinal(finalTest)); */
 
 
-    List<Package> installedPacks = new ArrayList<>();
+    ArrayList<Package> installedPacks = new ArrayList<>();
     // Add packages from initial to installed List
     for (String init : initial) {
       String[] temp = init.split("=",2);
@@ -289,12 +289,12 @@ static List<String> constraintsMa = new ArrayList<>();
   }
 
   
-  static HashSet<List<Package>> seen2 = new HashSet();
+  static HashSet<ArrayList<Package>> seen2 = new HashSet();
   static List<Package> solution = new ArrayList();
   static boolean solFound = false;
   static String finalCmds = "[";
 
-  public static void search(List<Package> x, List<Package> repo, String cmds) {
+  public static void search(ArrayList<Package> x, List<Package> repo, String cmds) {
     String tempCmds = cmds;
     if (!solFound) {
       // TODO: Complete search method as per Piazza
@@ -332,7 +332,7 @@ static List<String> constraintsMa = new ArrayList<>();
         } else {
           System.out.println("Not Final");
           for (Package p : repo) {
-            List<Package> y = new ArrayList<Package>(x);
+            ArrayList<Package> y = new ArrayList<Package>(x);
             
             if (y.contains(p)) {
               y.remove(p);
