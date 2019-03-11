@@ -332,6 +332,7 @@ static List<String> constraintsMa = new ArrayList<>();
         } else {
           System.out.println("Not Final");
           for (Package p : repo) {
+            System.out.println(tempCmds);
             ArrayList<Package> y = new ArrayList<Package>(x);
             
             if (y.contains(p)) {
