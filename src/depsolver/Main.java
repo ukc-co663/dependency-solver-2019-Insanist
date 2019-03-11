@@ -300,9 +300,25 @@ static List<String> constraintsMa = new ArrayList<>();
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
       System.out.println("Valid");
+      System.out.println("Seen List Before");
+      for (List<Package> l : seen2) {
+        for (Package p : l) {
+          System.out.print(p.getName() + " " + p.getVersion() + " // " );
+        }
+        System.out.print("\n");
+      }
       if (!seen2.contains(x)) {
 
         seen2.add(x);
+        
+        System.out.println("Seen List After");
+      for (List<Package> l : seen2) {
+        for (Package p : l) {
+          System.out.print(p.getName() + " " + p.getVersion() + " // " );
+        }
+        System.out.print("\n");
+      }
+
         System.out.print("Final check");
         if (isFinal(x)) {
           // Solution found
