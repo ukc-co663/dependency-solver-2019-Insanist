@@ -307,6 +307,8 @@ static List<String> constraintsMa = new ArrayList<>();
         }
         System.out.print("\n");
       }
+      boolean seenTemp = seen2.contains(x);
+      System.out.println("Seen: " + seenTemp);
       if (!seen2.contains(x)) {
 
         seen2.add(x);
