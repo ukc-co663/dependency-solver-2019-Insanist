@@ -314,7 +314,7 @@ static List<String> constraintsMa = new ArrayList<>();
           solFound = true;
           solution = x;
         } else {
-          System.out.println("search loop");
+          System.out.println("Not Final");
           for (Package p : repo) {
             List<Package> y = new ArrayList<Package>(x);
             
@@ -333,8 +333,9 @@ static List<String> constraintsMa = new ArrayList<>();
           }
         }
 
+      } else {
+        System.out.println("Not valid");
       }
-      System.out.println("Not valid");
     }
     
     
