@@ -93,9 +93,11 @@ static List<String> constraintsMa = new ArrayList<>();
 
     
     //System.out.println(commands);
-    HashSet<String> initSet = new HashSet<String>(initial);
-    search(installedPacks, repo, initSet);
+    HashSet<String> emptySet = new HashSet<String>();
+    search(installedPacks, repo, emptySet);
 
+
+    System.out.println(installedPacks.size());
     //System.out.println("Final cmds: " + finalCmds);
 
     String res = JSON.toJSONString(finalCmds, true);
