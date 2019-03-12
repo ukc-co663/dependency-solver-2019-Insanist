@@ -94,7 +94,12 @@ static List<String> constraintsMa = new ArrayList<>();
     HashSet<String> emptyCmds = new HashSet<String>();
     search(installedPacks, repo, emptyCmds);
 
-    System.out.println("Final cmds: " + finalCmds);
+    //System.out.println("Final cmds: " + finalCmds);
+
+    String res = JSON.toJSONString(finalCmds, true);
+    System.out.println(res);
+
+
   }
 
   static boolean isFinal(List<Package> installed) {
@@ -193,7 +198,7 @@ static List<String> constraintsMa = new ArrayList<>();
             return false;
           }
         }
-        System.out.println("Positive constraints are final");
+        //System.out.println("Positive constraints are final");
       } else if (s.charAt(0) == '-') { // Negative constraint
         c = s.substring(1);
         if (c.contains(">") && c.contains("=")) {
@@ -283,7 +288,7 @@ static List<String> constraintsMa = new ArrayList<>();
         }
       }
     }
-    System.out.println("Negative constraints are final");
+    //System.out.println("Negative constraints are final");
     return true;
 
   }
@@ -300,35 +305,35 @@ static List<String> constraintsMa = new ArrayList<>();
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
-      System.out.println("Valid");
-      System.out.println("Seen List Before");
+      //System.out.println("Valid");
+      //System.out.println("Seen List Before");
       for (List<Package> l : seen2) {
         for (Package p : l) {
-          System.out.print(p.getName() + " " + p.getVersion() + " // " );
+          //System.out.print(p.getName() + " " + p.getVersion() + " // " );
         }
-        System.out.print("\n");
+        //System.out.print("\n");
       }
       boolean seenTemp = seen2.contains(x);
-      System.out.println("Seen: " + seenTemp);
+      //System.out.println("Seen: " + seenTemp);
       if (!seen2.contains(x)) {
 
         seen2.add(x);
         
-        System.out.println("Seen List After");
+       /*  System.out.println("Seen List After");
       for (List<Package> l : seen2) {
         for (Package p : l) {
           System.out.print(p.getName() + " " + p.getVersion() + " // " );
         }
         System.out.print("\n");
-      }
+      } */
 
-        System.out.print("Final check");
+        //System.out.print("Final check");
         if (isFinal(x)) {
           // Solution found
-          System.out.println("Solution = ");
+          /* System.out.println("Solution = ");
           for (Package p : x) {
             System.out.println(p.getName() + " " + p.getVersion());
-          }
+          } */
           
 
           for (String s : tempCmds) {
@@ -336,18 +341,18 @@ static List<String> constraintsMa = new ArrayList<>();
           }
 
           
-          finalCmds.add("]");
+          //finalCmds.add("]");
           solFound = true;
           solution = x;
 
          
 
         } else {
-          System.out.println("Not Final");
+          //System.out.println("Not Final");
           for (Package p : repo) {
-            System.out.println("*** Cmds = " + tempCmds);
+            //System.out.println("*** Cmds = " + tempCmds);
             ArrayList<Package> y = new ArrayList<Package>(x);
-            System.out.println("*** Curent P = " + p.getName() + "=" + p.getVersion());
+           // System.out.println("*** Curent P = " + p.getName() + "=" + p.getVersion());
 
             /* if (y.contains(p)) {
               System.out.println("Remove");
@@ -366,7 +371,7 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
 
             if (!y.contains(p)) {
-              System.out.println("Add");
+              //System.out.println("Add");
               y.add(p);
               HashSet<String> plusCmds = new HashSet<String>(tempCmds);
               String plusPkg = "+" + p.getName() + "=" + p.getVersion();
@@ -378,7 +383,7 @@ static List<String> constraintsMa = new ArrayList<>();
         }
 
       } else {
-        System.out.println("Not valid");
+        //System.out.println("Not valid");
       }
     }
   }
@@ -393,11 +398,11 @@ static List<String> constraintsMa = new ArrayList<>();
   */
   public static boolean isValid(List<Package> installed) {
     //Dependencies Start
-    System.out.print("Testing [ ");
-    for (Package tst : installed) {
+    //System.out.print("Testing [ ");
+    /* for (Package tst : installed) {
       System.out.print(tst.getName()+"="+tst.getVersion() + ", ");
-    }
-    System.out.print("] ");
+    } */
+    //System.out.print("] ");
 
     for (Package p1 : installed) {
       List<List<String>> deps;
@@ -418,9 +423,9 @@ static List<String> constraintsMa = new ArrayList<>();
 
             String[] grEqSplit = q.split(">=",2);
             boolean flag = false;
-            System.out.println(p1.getName() + " " + p1.getVersion() + " " + q);
+            //System.out.println(p1.getName() + " " + p1.getVersion() + " " + q);
             for (Package pGrEq : installed) {
-              System.out.println(grEqSplit[0] + " " + pGrEq.getName());
+              //System.out.println(grEqSplit[0] + " " + pGrEq.getName());
               if (pGrEq.getName().equals(grEqSplit[0]) && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
                 flag = true;
                 isDepClauseValid = true;
@@ -476,8 +481,8 @@ static List<String> constraintsMa = new ArrayList<>();
               if (pLe.getName().equals(leSplit[0]) && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
                 flag = true;
                 isDepClauseValid = true;
-                System.out.println(q);
-                System.out.println(leSplit[0] + " " + leSplit[1] + " " + pLe.getName() +  " " + pLe.getVersion());
+                //System.out.println(q);
+                //System.out.println(leSplit[0] + " " + leSplit[1] + " " + pLe.getName() +  " " + pLe.getVersion());
               }
             }
             /* if (!flag) {
@@ -517,7 +522,7 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
           }
         } // why1
-        System.out.println("Clause valid check " + isDepClauseValid);
+       // System.out.println("Clause valid check " + isDepClauseValid);
         if (!isDepClauseValid) {
           return false;
         }
@@ -527,7 +532,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
     }
     // Dependencies end
-    System.out.println("Dependencies valid");
+    //System.out.println("Dependencies valid");
     // Conflicts Start
 
     for (Package p2 : installed) {
@@ -552,7 +557,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
-              System.out.println("isValid conf grEq");
+              //System.out.println("isValid conf grEq");
               return false;
             }
 
@@ -574,7 +579,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
-              System.out.println("isValid conf leEq");
+             // System.out.println("isValid conf leEq");
               return false;
             }
           } else if (q.contains(">")) {
@@ -588,7 +593,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
-              System.out.println("isValid conf gr");
+              //System.out.println("isValid conf gr");
               return false;
             }
 
@@ -617,7 +622,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
-              System.out.println("isValid conf le");
+              //System.out.println("isValid conf le");
               return false;
             }
           } else if (q.contains("=")) {
@@ -632,7 +637,7 @@ static List<String> constraintsMa = new ArrayList<>();
               }
             }
             if (flag) {
-              System.out.println("isValid conf eq");
+              //System.out.println("isValid conf eq");
               return false;
             }
           } else {
@@ -647,7 +652,7 @@ static List<String> constraintsMa = new ArrayList<>();
             }
 
             if (flag) {
-              System.out.println("isValid conf any");
+              //System.out.println("isValid conf any");
               return false;
             }
           }
@@ -656,7 +661,7 @@ static List<String> constraintsMa = new ArrayList<>();
     }
 
     // Conflicts End
-    System.out.println("Conflicts valid");
+    //System.out.println("Conflicts valid");
     return true;
   }
 
