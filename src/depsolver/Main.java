@@ -328,6 +328,7 @@ static List<String> constraintsMa = new ArrayList<>();
            if (!solFound) {
             if (!y.contains(p)) {
               y.add(p);
+              System.out.println("Y: " + y);
               HashSet<String> plusCmds = new HashSet<String>(tempCmds);
               String plusPkg = "+" + p.getName() + "=" + p.getVersion();
               plusCmds.add(plusPkg);
@@ -335,6 +336,7 @@ static List<String> constraintsMa = new ArrayList<>();
             } else if (y.contains(p)) {
               
               y.remove(p);
+              System.out.println("Y: " + y);
               HashSet<String> minusCmds = new HashSet<String>(tempCmds);
               String minusPkg = "-" + p.getName() + "=" + p.getVersion();
               minusCmds.add(minusPkg);
