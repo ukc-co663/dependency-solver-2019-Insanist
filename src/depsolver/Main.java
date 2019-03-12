@@ -369,6 +369,9 @@ static List<String> constraintsMa = new ArrayList<>();
               plusCmds.add(plusPkg);
               search(y, repo, plusCmds);
             } */
+            for (Package p2 : y) {
+              System.out.print(p.getName() + "=" + p.getVersion() + " // ");
+            }
 
             if (!y.contains(p)) {
               //System.out.println("Add");
