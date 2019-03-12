@@ -374,6 +374,7 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
             //System.out.println("P =" + p.getName() + "=" + p.getVersion());
             //System.out.println("\n");
+            System.out.println("Cmds: " + tempCmds);
             if (!y.contains(p)) {
               //System.out.println("Add");
               y.add(p);
