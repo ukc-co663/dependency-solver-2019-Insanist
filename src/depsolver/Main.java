@@ -372,7 +372,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package p2 : y) {
               System.out.print(p2.getName() + "=" + p2.getVersion() + " // ");
             }
-            System.out.println(p.getName() + "=" + p.getVersion());
+            System.out.println("P =" + p.getName() + "=" + p.getVersion());
             System.out.println("\n");
             if (!y.contains(p)) {
               System.out.println("Add");
