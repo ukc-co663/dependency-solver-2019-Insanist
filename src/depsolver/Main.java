@@ -352,28 +352,7 @@ static List<String> constraintsMa = new ArrayList<>();
           for (Package p : repo) {
             //System.out.println("*** Cmds = " + tempCmds);
             ArrayList<Package> y = new ArrayList<Package>(x);
-           // System.out.println("*** Curent P = " + p.getName() + "=" + p.getVersion());
-
-            /* if (y.contains(p)) {
-              System.out.println("Remove");
-              y.remove(p);
-              HashSet<String> minusCmds = new HashSet<String>(tempCmds);
-              String minusPkg = "-" + p.getName() + "=" + p.getVersion();
-              minusCmds.add(minusPkg);
-              search(y, repo, minusCmds);
-            } else {
-              System.out.println("Add");
-              y.add(p);
-              HashSet<String> plusCmds = new HashSet<String>(tempCmds);
-              String plusPkg = "+" + p.getName() + "=" + p.getVersion();
-              plusCmds.add(plusPkg);
-              search(y, repo, plusCmds);
-            } */
-            /* for (Package p2 : y) {
-              //System.out.print(p2.getName() + "=" + p2.getVersion() + " // ");
-            } */
-            //System.out.println("P =" + p.getName() + "=" + p.getVersion());
-            //System.out.println("\n");
+           if (!solFound) {
             System.out.println("Cmds: " + tempCmds);
             if (!y.contains(p)) {
               //System.out.println("Add");
@@ -393,6 +372,8 @@ static List<String> constraintsMa = new ArrayList<>();
               minusCmds.add(minusPkg);
               search(y, repo, minusCmds);
             }
+           }
+            
           }
         }
 
