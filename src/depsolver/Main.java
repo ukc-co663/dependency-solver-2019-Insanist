@@ -372,9 +372,9 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package p2 : y) {
               System.out.print(p.getName() + "=" + p.getVersion() + " // ");
             }
-
+            System.out.println("\n");
             if (!y.contains(p)) {
-              //System.out.println("Add");
+              System.out.println("Add");
               y.add(p);
               HashSet<String> plusCmds = new HashSet<String>(tempCmds);
               String plusPkg = "+" + p.getName() + "=" + p.getVersion();
