@@ -388,8 +388,8 @@ static List<String> constraintsMa = new ArrayList<>();
               y.remove(p);
               HashSet<String> minusCmds = new HashSet<String>(tempCmds);
               String minusPkg = "-" + p.getName() + "=" + p.getVersion();
-              String altMinusPkg = "+" + p.getName() + "=" + p.getVersion();
-              minusCmds.remove(altMinusPkg);
+              /* String altMinusPkg = "+" + p.getName() + "=" + p.getVersion();
+              minusCmds.remove(altMinusPkg); */
               minusCmds.add(minusPkg);
               search(y, repo, minusCmds);
             }
