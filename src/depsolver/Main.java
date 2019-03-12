@@ -2,6 +2,9 @@ package depsolver;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+
+import sun.net.www.content.audio.x_aiff;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -305,7 +308,13 @@ static List<String> constraintsMa = new ArrayList<>();
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
-      
+    
+      System.out.println("\n");
+      for (Package x1 : x) {
+        System.out.println(x1.getName() + " " + x1.getVersion());
+      }
+      System.out.println("Is Valid");
+
       boolean seenTemp = seen2.contains(x);
       
       if (!seenTemp) {
