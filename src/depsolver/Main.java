@@ -378,6 +378,13 @@ static List<String> constraintsMa = new ArrayList<>();
               plusCmds.add(plusPkg);
               search(y, repo, plusCmds);
             
+            } else if (y.contains(p)) {
+              System.out.println("Remove");
+              y.remove(p);
+              HashSet<String> minusCmds = new HashSet<String>(tempCmds);
+              String minusPkg = "-" + p.getName() + "=" + p.getVersion();
+              minusCmds.add(minusPkg);
+              search(y, repo, minusCmds);
             }
           }
         }
