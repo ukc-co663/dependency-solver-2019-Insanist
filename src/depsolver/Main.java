@@ -87,7 +87,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
       for (Package p : repo) {
         System.out.println(p.getName() + " " + p.getVersion());
-        if (p.getName() == temp[0] && p.getVersion() == temp[1]) {
+        if (p.getName().equals(temp[0]) && p.getVersion().equals(temp[1])) {
           installedPacks.add(p);
         }
       }
