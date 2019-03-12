@@ -311,17 +311,19 @@ static List<String> constraintsMa = new ArrayList<>();
     HashSet<String> tempCmds = new HashSet<String>(cmds);
     if (!solFound) {
       // TODO: Complete search method as per Piazza
-    if (isValid(x)) {
-    
-      System.out.println("\n");
-      for (Package x1 : x) {
-        System.out.println(x1.getName() + " " + x1.getVersion());
-      }
-      System.out.println("Is Valid");
+
 
       boolean seenTemp = seen2.contains(x);
       
       if (!seenTemp) {
+
+        if (isValid(x)) {
+    
+          System.out.println("\n");
+          for (Package x1 : x) {
+            System.out.println(x1.getName() + " " + x1.getVersion());
+          }
+          System.out.println("Is Valid");
 
         seen2.add(x);
         if (isFinal(x)) {          
