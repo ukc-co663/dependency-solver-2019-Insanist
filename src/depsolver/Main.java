@@ -353,7 +353,7 @@ static List<String> constraintsMa = new ArrayList<>();
             //System.out.println("*** Cmds = " + tempCmds);
             ArrayList<Package> y = new ArrayList<Package>(x);
            if (!solFound) {
-            System.out.println("Cmds: " + tempCmds);
+            //System.out.println("Cmds: " + tempCmds);
             if (!y.contains(p)) {
               //System.out.println("Add");
               y.add(p);
