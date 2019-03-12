@@ -340,7 +340,7 @@ static List<String> constraintsMa = new ArrayList<>();
               System.out.println("Plus: " + plusPkg);
               plusCmds.add(plusPkg);
               search(y, repo, plusCmds);            
-            } else if (y.contains(p)) {
+            } /* else if (y.contains(p)) {
               
               y.remove(p);
               
@@ -349,7 +349,7 @@ static List<String> constraintsMa = new ArrayList<>();
               System.out.println("Minus: " + minusPkg);
               minusCmds.add(minusPkg);
               search(y, repo, minusCmds);
-            }
+            } */
            }
             
           }
