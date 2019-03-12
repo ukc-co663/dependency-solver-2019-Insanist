@@ -370,8 +370,9 @@ static List<String> constraintsMa = new ArrayList<>();
               search(y, repo, plusCmds);
             } */
             for (Package p2 : y) {
-              System.out.print(p.getName() + "=" + p.getVersion() + " // ");
+              System.out.print(p2.getName() + "=" + p2.getVersion() + " // ");
             }
+            System.out.println(p.getName() + "=" + p.getVersion());
             System.out.println("\n");
             if (!y.contains(p)) {
               System.out.println("Add");
