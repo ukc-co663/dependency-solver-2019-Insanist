@@ -356,7 +356,7 @@ static List<String> constraintsMa = new ArrayList<>();
         }
 
       } else {
-        //System.out.println("Not valid");
+        System.out.println("Not valid");
       }
     }
   }
