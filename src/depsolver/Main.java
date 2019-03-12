@@ -347,6 +347,7 @@ static List<String> constraintsMa = new ArrayList<>();
           for (Package p : repo) {
             System.out.println("*** Cmds = " + tempCmds);
             ArrayList<Package> y = new ArrayList<Package>(x);
+            System.out.println("*** Curent P = " + p.getName() + "=" + p.getVersion());
             
             if (y.contains(p)) {
               System.out.println("Add");
