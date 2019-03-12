@@ -318,14 +318,20 @@ static List<String> constraintsMa = new ArrayList<>();
           }
 
           solFound = true;
+          System.out.println("Solution");
+          for (Package sol : x) {
+            System.out.println(sol.getName() + " " + sol.getVersion());
+          }
+          System.out.println("\n");
+          
           solution = x;
 
         } else {
           
           for (Package p : repo) {
-            
+            if (!solFound) {
             ArrayList<Package> y = new ArrayList<Package>(x);
-           if (!solFound) {
+           
             if (!y.contains(p)) {
               y.add(p);
               
