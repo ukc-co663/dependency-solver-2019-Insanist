@@ -82,7 +82,8 @@ static List<String> constraintsMa = new ArrayList<>();
     // Add packages from initial to installed List
     for (String init : initial) {
       String[] temp = init.split("=",2);
-
+      System.out.println(temp[0]);
+      System.out.println(temp[1]);
 
       for (Package p : repo) {
         if (p.getName() == temp[0] && p.getVersion() == temp[1]) {
@@ -91,13 +92,14 @@ static List<String> constraintsMa = new ArrayList<>();
       }
     }
 
+    System.out.println(installedPacks.size());
     
     //System.out.println(commands);
     HashSet<String> emptySet = new HashSet<String>();
     search(installedPacks, repo, emptySet);
 
 
-    System.out.println(installedPacks.size());
+    
     //System.out.println("Final cmds: " + finalCmds);
 
     String res = JSON.toJSONString(finalCmds, true);
