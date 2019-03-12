@@ -91,8 +91,8 @@ static List<String> constraintsMa = new ArrayList<>();
 
     
     //System.out.println(commands);
-    HashSet<String> emptyCmds = new HashSet<String>();
-    search(installedPacks, repo, emptyCmds);
+    HashSet<String> initSet = new HashSet<String>(initial);
+    search(installedPacks, repo, initSet);
 
     //System.out.println("Final cmds: " + finalCmds);
 
@@ -305,70 +305,38 @@ static List<String> constraintsMa = new ArrayList<>();
     if (!solFound) {
       // TODO: Complete search method as per Piazza
     if (isValid(x)) {
-      //System.out.println("Valid");
-      //System.out.println("Seen List Before");
-      for (List<Package> l : seen2) {
-        for (Package p : l) {
-          //System.out.print(p.getName() + " " + p.getVersion() + " // " );
-        }
-        //System.out.print("\n");
-      }
+      
       boolean seenTemp = seen2.contains(x);
-      //System.out.println("Seen: " + seenTemp);
-      if (!seen2.contains(x)) {
+      
+      if (!seenTemp) {
 
         seen2.add(x);
-        
-       /*  System.out.println("Seen List After");
-      for (List<Package> l : seen2) {
-        for (Package p : l) {
-          System.out.print(p.getName() + " " + p.getVersion() + " // " );
-        }
-        System.out.print("\n");
-      } */
-
-        //System.out.print("Final check");
-        if (isFinal(x)) {
-          // Solution found
-          /* System.out.println("Solution = ");
-          for (Package p : x) {
-            System.out.println(p.getName() + " " + p.getVersion());
-          } */
-          
+        if (isFinal(x)) {          
 
           for (String s : tempCmds) {
             finalCmds.add(s);
           }
 
-          
-          //finalCmds.add("]");
           solFound = true;
           solution = x;
 
-         
-
         } else {
-          //System.out.println("Not Final");
+          
           for (Package p : repo) {
-            //System.out.println("*** Cmds = " + tempCmds);
+            
             ArrayList<Package> y = new ArrayList<Package>(x);
            if (!solFound) {
-            //System.out.println("Cmds: " + tempCmds);
             if (!y.contains(p)) {
-              //System.out.println("Add");
               y.add(p);
               HashSet<String> plusCmds = new HashSet<String>(tempCmds);
               String plusPkg = "+" + p.getName() + "=" + p.getVersion();
               plusCmds.add(plusPkg);
-              search(y, repo, plusCmds);
-            
+              search(y, repo, plusCmds);            
             } else if (y.contains(p)) {
-              //System.out.println("Remove");
+              
               y.remove(p);
               HashSet<String> minusCmds = new HashSet<String>(tempCmds);
               String minusPkg = "-" + p.getName() + "=" + p.getVersion();
-              /* String altMinusPkg = "+" + p.getName() + "=" + p.getVersion();
-              minusCmds.remove(altMinusPkg); */
               minusCmds.add(minusPkg);
               search(y, repo, minusCmds);
             }
