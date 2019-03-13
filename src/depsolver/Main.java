@@ -330,10 +330,10 @@ static List<String> constraintsMa = new ArrayList<>();
         seen2.add(x);
         if (isFinal(x)) {          
 
-          for (String s : tempCmds) {
+          /* for (String s : tempCmds) {
             finalCmds.add(s);
           }
-
+ */
           solFound = true;
           System.out.println("Solution");
           for (Package sol : x) {
@@ -346,7 +346,7 @@ static List<String> constraintsMa = new ArrayList<>();
         } else {
           
           for (Package p : repo) {
-            //if (!solFound) {
+            if (!solFound) {
             ArrayList<Package> y = new ArrayList<Package>(x);
            
             if (!y.contains(p)) {
@@ -356,7 +356,10 @@ static List<String> constraintsMa = new ArrayList<>();
               String plusPkg = "+" + p.getName() + "=" + p.getVersion();
               System.out.println("Plus: " + plusPkg);
               plusCmds.add(plusPkg);
-              search(y, repo, plusCmds);            
+              search(y, repo, plusCmds);
+              if (solFound) {
+                finalCmds.add(plusPkg);
+              }           
             } else if (y.contains(p)) {
               
               y.remove(p);
@@ -366,8 +369,11 @@ static List<String> constraintsMa = new ArrayList<>();
               System.out.println("Minus: " + minusPkg);
               minusCmds.add(minusPkg);
               search(y, repo, minusCmds);
+              if (solFound) {
+                finalCmds.add(minusPkg);
+              }   
             }
-           //}
+           }
             
           }
         }
