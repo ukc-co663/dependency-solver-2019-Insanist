@@ -92,10 +92,10 @@ static List<String> constraintsMa = new ArrayList<>();
       }
     }
 
-    if (installedPacks.size() == 0) {
+ /*    if (installedPacks.size() == 0) {
       Package emptyPack  = new Package();
       installedPacks.add(emptyPack);
-    }
+    } */
 
     
     //System.out.println(commands);
@@ -312,6 +312,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
   public static void search(ArrayList<Package> x, List<Package> repo, HashSet<String> cmds) {
     HashSet<String> tempCmds = new HashSet<String>(cmds);
+    System.out.println(tempCmds);
     if (!solFound) {
       // TODO: Complete search method as per Piazza
 
