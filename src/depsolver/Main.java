@@ -312,7 +312,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
   public static void search(ArrayList<Package> x, List<Package> repo, HashSet<String> cmds) {
     HashSet<String> tempCmds = new HashSet<String>(cmds);
-    System.out.println(tempCmds);
+    
     if (!solFound) {
       // TODO: Complete search method as per Piazza
 
@@ -323,7 +323,7 @@ static List<String> constraintsMa = new ArrayList<>();
       boolean seenTemp = seen2.contains(x);
       
       if (!seenTemp) {
-
+        System.out.println(tempCmds);
         System.out.println("\n");
         for (Package x1 : x) {
           System.out.println(x1.getName() + " " + x1.getVersion());
