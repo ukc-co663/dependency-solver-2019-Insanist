@@ -99,7 +99,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
     
     //System.out.println(commands);
-    List<String> emptySet = new List<String>();
+    ArrayList<String> emptySet = new ArrayList<String>();
     search(installedPacks, repo, emptySet);
 
 
@@ -310,8 +310,8 @@ static List<String> constraintsMa = new ArrayList<>();
   static HashSet<String> finalCmds = new HashSet<String>();
 
 
-  public static void search(ArrayList<Package> x, List<Package> repo, List<String> cmds) {
-    List<String> tempCmds = new List<String>(cmds);
+  public static void search(ArrayList<Package> x, List<Package> repo, ArrayList<String> cmds) {
+    ArrayList<String> tempCmds = new ArrayList<String>(cmds);
     
     if (!solFound) {
       // TODO: Complete search method as per Piazza
@@ -356,7 +356,7 @@ static List<String> constraintsMa = new ArrayList<>();
             if (!y.contains(p)) {
               y.add(p);
               
-              List<String> plusCmds = new List<String>(tempCmds);
+              ArrayList<String> plusCmds = new ArrayList<String>(tempCmds);
               String plusPkg = "+" + p.getName() + "=" + p.getVersion();
               System.out.println("Plus: " + plusPkg);
               plusCmds.add(plusPkg);
@@ -368,7 +368,7 @@ static List<String> constraintsMa = new ArrayList<>();
               
               y.remove(p);
               
-              List<String> minusCmds = new List<String>(tempCmds);
+              ArrayList<String> minusCmds = new ArrayList<String>(tempCmds);
               String minusPkg = "-" + p.getName() + "=" + p.getVersion();
               System.out.println("Minus: " + minusPkg);
               minusCmds.add(minusPkg);
