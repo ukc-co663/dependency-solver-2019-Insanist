@@ -309,7 +309,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
   public static void search(ArrayList<Package> x, List<Package> repo, HashSet<String> cmds) {
     HashSet<String> tempCmds = new HashSet<String>(cmds);
-    
+    if (!solFound) {
       // TODO: Complete search method as per Piazza
 
 
@@ -344,7 +344,7 @@ static List<String> constraintsMa = new ArrayList<>();
         } else {
           
           for (Package p : repo) {
-            if (!solFound) {
+            //if (!solFound) {
             ArrayList<Package> y = new ArrayList<Package>(x);
            
             if (!y.contains(p)) {
@@ -365,7 +365,7 @@ static List<String> constraintsMa = new ArrayList<>();
               minusCmds.add(minusPkg);
               search(y, repo, minusCmds);
             }
-           }
+           //}
             
           }
         }
@@ -374,7 +374,7 @@ static List<String> constraintsMa = new ArrayList<>();
         System.out.println("Not valid");
       }
     }
-  
+  }
     
     
     
