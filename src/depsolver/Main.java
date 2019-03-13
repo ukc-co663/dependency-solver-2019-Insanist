@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Stack;
+import java.util.Collections;
 
 class Package {
   private String name;
@@ -105,7 +106,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
     
     //System.out.println("Final cmds: " + finalCmds);
-
+    Collections.reverse(finalCmds);
     String res = JSON.toJSONString(finalCmds, true);
     System.out.println(res);
 
