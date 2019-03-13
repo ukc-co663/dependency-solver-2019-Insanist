@@ -307,7 +307,7 @@ static List<String> constraintsMa = new ArrayList<>();
   static HashSet<ArrayList<Package>> seen2 = new HashSet();
   static ArrayList<Package> solution = new ArrayList();
   static boolean solFound = false;
-  static HashSet<String> finalCmds = new HashSet<String>();
+  static ArrayList<String> finalCmds = new HashSet<String>();
 
 
   public static void search(ArrayList<Package> x, List<Package> repo, ArrayList<String> cmds) {
