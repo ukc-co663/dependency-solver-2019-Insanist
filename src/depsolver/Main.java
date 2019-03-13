@@ -82,11 +82,11 @@ static List<String> constraintsMa = new ArrayList<>();
     // Add packages from initial to installed List
     for (String init : initial) {
       String[] temp = init.split("=",2);
-      System.out.println(temp[0]);
-      System.out.println(temp[1]);
+     // System.out.println(temp[0]);
+      //System.out.println(temp[1]);
 
       for (Package p : repo) {
-        System.out.println(p.getName() + " " + p.getVersion());
+        //System.out.println(p.getName() + " " + p.getVersion());
         if (p.getName().equals(temp[0]) && p.getVersion().equals(temp[1])) {
           installedPacks.add(p);
         }
@@ -324,12 +324,12 @@ static List<String> constraintsMa = new ArrayList<>();
       boolean seenTemp = seen2.contains(x);
       
       if (!seenTemp) {
-        System.out.println(tempCmds);
+       /*  System.out.println(tempCmds);
         System.out.println("\n");
         for (Package x1 : x) {
           System.out.println(x1.getName() + " " + x1.getVersion());
         }
-        System.out.println("Is Valid & Unseen");
+        System.out.println("Is Valid & Unseen"); */
         
 
         seen2.add(x);
@@ -340,11 +340,11 @@ static List<String> constraintsMa = new ArrayList<>();
           }
  */
           solFound = true;
-          System.out.println("Solution");
+          /* System.out.println("Solution");
           for (Package sol : x) {
             System.out.println(sol.getName() + " " + sol.getVersion());
           }
-          System.out.println("\n");
+          System.out.println("\n"); */
           
           solution = x;
 
@@ -359,7 +359,7 @@ static List<String> constraintsMa = new ArrayList<>();
               
               ArrayList<String> plusCmds = new ArrayList<String>(tempCmds);
               String plusPkg = "+" + p.getName() + "=" + p.getVersion();
-              System.out.println("Plus: " + plusPkg);
+              //System.out.println("Plus: " + plusPkg);
               plusCmds.add(plusPkg);
               search(y, repo, plusCmds);
               if (solFound) {
@@ -371,7 +371,7 @@ static List<String> constraintsMa = new ArrayList<>();
               
               ArrayList<String> minusCmds = new ArrayList<String>(tempCmds);
               String minusPkg = "-" + p.getName() + "=" + p.getVersion();
-              System.out.println("Minus: " + minusPkg);
+              //System.out.println("Minus: " + minusPkg);
               minusCmds.add(minusPkg);
               search(y, repo, minusCmds);
               if (solFound) {
@@ -384,7 +384,7 @@ static List<String> constraintsMa = new ArrayList<>();
         }
 
       } else {
-        System.out.println("Not valid");
+        //System.out.println("Not valid");
       }
     }
   }
