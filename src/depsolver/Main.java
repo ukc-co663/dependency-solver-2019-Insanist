@@ -2,7 +2,7 @@ package depsolver;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-
+import com.sun.xml.internal.bind.v2.runtime.reflect.Lister.Pack;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -93,7 +93,11 @@ static List<String> constraintsMa = new ArrayList<>();
       }
     }
 
-    System.out.println(installedPacks.size());
+    if (installedPacks.size() == 0) {
+      Package emptyPack  = new Package();
+      installedPacks.add(emptyPack);
+    }
+
     
     //System.out.println(commands);
     HashSet<String> emptySet = new HashSet<String>();
