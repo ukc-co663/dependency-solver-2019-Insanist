@@ -102,14 +102,14 @@ static List<String> constraintsMa = new ArrayList<>();
     // SEEN 0
     Package benchmark = repo.get(0);
     Package comparePack = new Package();
-    int lowestSize = repo.get(0).getSize();
+    
     Package lowestPack = repo.get(0);
 
 
 
     for (Package pack : repo) {
       comparePack = pack;
-      if (pack.getSize() < comparePack.getSize() ) {
+      if (pack.getSize() < lowestPack.getSize() ) {
         lowestPack = pack;
       }
     }
