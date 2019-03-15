@@ -350,27 +350,27 @@ static List<String> constraintsMa = new ArrayList<>();
       boolean seenTemp = seen2.contains(x);
       
       if (!seenTemp) {
-       /*  System.out.println(tempCmds);
+        System.out.println(tempCmds);
         System.out.println("\n");
         for (Package x1 : x) {
           System.out.println(x1.getName() + " " + x1.getVersion());
         }
-        System.out.println("Is Valid & Unseen"); */
+        System.out.println("Is Valid & Unseen");
         
 
         seen2.add(x);
         if (isFinal(x)) {          
-
+          
           /* for (String s : tempCmds) {
             finalCmds.add(s);
           }
  */
           solFound = true;
-          System.out.println("Solution");
+          /* System.out.println("Solution");
           for (Package sol : x) {
             System.out.println(sol.getName() + " " + sol.getVersion());
           }
-          System.out.println("\n");
+          System.out.println("\n"); */
           
           solution = x;
 
