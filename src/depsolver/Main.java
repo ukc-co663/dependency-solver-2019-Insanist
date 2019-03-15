@@ -441,116 +441,239 @@ static List<String> constraintsMa = new ArrayList<>();
       
       
       for (List<String> clause : deps) {
-        
         boolean isDepClauseValid = true;
-        for (String q : clause) {
-          isDepClauseValid = false; // valid
-         
-          if (q.contains(">") && q.contains("=")) {
 
-            String[] grEqSplit = q.split(">=",2);
-            boolean flag = false;
-            //System.out.println(p1.getName() + " " + p1.getVersion() + " " + q);
-            for (Package pGrEq : installed) {
-              //System.out.println(grEqSplit[0] + " " + pGrEq.getName());
-              if (pGrEq.getName().equals(grEqSplit[0]) && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
-                flag = true;
-                isDepClauseValid = true;
-              }
-            }
-            /* if (!flag) {
-              System.out.println("isValid grEq");
-              return false;
-            } */
 
-            // Greater than or Equal To
-            // 1. Split into Package name and version
-            // 2. Loop through all installed packages
-            // 3. Find version name and check for correct version with compareTo()
-            // 4. If found set local oolean to true and continue looping
-            // 5. If not found immediately return FALSE overall
+        // If clause size is greater than 1 - implies OR clause
+        
 
-          } else if (q.contains("<") && q.contains("=")) {
-            // Less Than or Equal To
-            String[] leEqSplit = q.split("<=",2);
-            boolean flag = false;
-            for (Package pLeEq : installed) {
-              if (pLeEq.getName().equals(leEqSplit[0]) && lex(pLeEq.getVersion(), leEqSplit[1]) <= 0  ) {
-                flag = true;
-                isDepClauseValid = true;
-              }
-            }
-            /* if (!flag) {
-              System.out.println("isValid leEq");
-              return false;
-            } */
-          } else if (q.contains(">")) {
-            // Greater Than
-            String[] grSplit = q.split(">",2);
-            boolean flag = false;
-            for (Package pGr : installed) {
-              if (pGr.getName().equals(grSplit[0]) && lex(pGr.getVersion(), grSplit[1]) > 0  ) {
-                flag = true;
-                isDepClauseValid = true;
-              }
-            }
-            /* if (!flag) {
-              return false;
-            } */
-
-          } else if (q.contains("<")) {
-            // Less Than
-
-            String[] leSplit = q.split("<",2);
-            boolean flag = false;
+        if (clause.size() > 1) {
+          isDepClauseValid = false;
+          // Loop through clause and if found a valid section, set to true
+          for (String q : clause) {
             
-            for (Package pLe : installed) {
-              if (pLe.getName().equals(leSplit[0]) && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
-                flag = true;
-                isDepClauseValid = true;
-                //System.out.println(q);
-                //System.out.println(leSplit[0] + " " + leSplit[1] + " " + pLe.getName() +  " " + pLe.getVersion());
+           
+            if (q.contains(">") && q.contains("=")) {
+  
+              String[] grEqSplit = q.split(">=",2);
+              boolean flag = false;
+              //System.out.println(p1.getName() + " " + p1.getVersion() + " " + q);
+              for (Package pGrEq : installed) {
+                //System.out.println(grEqSplit[0] + " " + pGrEq.getName());
+                if (pGrEq.getName().equals(grEqSplit[0]) && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                }
               }
-            }
-            /* if (!flag) {
-              System.out.println("isValid gr");
-              return false;
-            } */
-          } else if (q.contains("=")) {
-            // Equals
-            
-            String[] eqSplit = q.split("=",2);
-            boolean flag = false;
-            for (Package pEq : installed) {
-              if (pEq.getName().equals(eqSplit[0]) && lex(pEq.getVersion(), eqSplit[1]) == 0  ) {
-                flag = true;
-                isDepClauseValid = true;
+              /* if (!flag) {
+                System.out.println("isValid grEq");
+                return false;
+              } */
+  
+              // Greater than or Equal To
+              // 1. Split into Package name and version
+              // 2. Loop through all installed packages
+              // 3. Find version name and check for correct version with compareTo()
+              // 4. If found set local oolean to true and continue looping
+              // 5. If not found immediately return FALSE overall
+  
+            } else if (q.contains("<") && q.contains("=")) {
+              // Less Than or Equal To
+              String[] leEqSplit = q.split("<=",2);
+              boolean flag = false;
+              for (Package pLeEq : installed) {
+                if (pLeEq.getName().equals(leEqSplit[0]) && lex(pLeEq.getVersion(), leEqSplit[1]) <= 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                }
               }
-            }
-            /* if (!flag) {
-              System.out.println("isValid eq");
-              return false;
-            } */
-          } else {
-            // Any Version
-            System.out.println(p1.getName() + "  dep: " +  q);
-            boolean flag = false;
-            for (Package any : installed) {
+              /* if (!flag) {
+                System.out.println("isValid leEq");
+                return false;
+              } */
+            } else if (q.contains(">")) {
+              // Greater Than
+              String[] grSplit = q.split(">",2);
+              boolean flag = false;
+              for (Package pGr : installed) {
+                if (pGr.getName().equals(grSplit[0]) && lex(pGr.getVersion(), grSplit[1]) > 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                }
+              }
+              /* if (!flag) {
+                return false;
+              } */
+  
+            } else if (q.contains("<")) {
+              // Less Than
+  
+              String[] leSplit = q.split("<",2);
+              boolean flag = false;
               
-              if (any.getName().equals(q)){
-                System.out.println("true");
-                flag = true;
-                isDepClauseValid = true;
+              for (Package pLe : installed) {
+                if (pLe.getName().equals(leSplit[0]) && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                  //System.out.println(q);
+                  //System.out.println(leSplit[0] + " " + leSplit[1] + " " + pLe.getName() +  " " + pLe.getVersion());
+                }
               }
+              /* if (!flag) {
+                System.out.println("isValid gr");
+                return false;
+              } */
+            } else if (q.contains("=")) {
+              // Equals
+              
+              String[] eqSplit = q.split("=",2);
+              boolean flag = false;
+              for (Package pEq : installed) {
+                if (pEq.getName().equals(eqSplit[0]) && lex(pEq.getVersion(), eqSplit[1]) == 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                }
+              }
+              /* if (!flag) {
+                System.out.println("isValid eq");
+                return false;
+              } */
+            } else {
+              // Any Version
+              System.out.println(p1.getName() + "  dep: " +  q);
+              boolean flag = false;
+              for (Package any : installed) {
+                
+                if (any.getName().equals(q)){
+                  System.out.println("true");
+                  flag = true;
+                  isDepClauseValid = true;
+                }
+              }
+  
+              /* if (!flag) {
+                System.out.println("isValid ANY");
+                return false;
+              } */
             }
-
-            /* if (!flag) {
-              System.out.println("isValid ANY");
-              return false;
-            } */
           }
-        } // why1
-       // System.out.println("Clause valid check " + isDepClauseValid);
+
+        } else {
+          for (String q : clause) {
+            isDepClauseValid = false; // valid
+           
+            if (q.contains(">") && q.contains("=")) {
+  
+              String[] grEqSplit = q.split(">=",2);
+              boolean flag = false;
+              //System.out.println(p1.getName() + " " + p1.getVersion() + " " + q);
+              for (Package pGrEq : installed) {
+                //System.out.println(grEqSplit[0] + " " + pGrEq.getName());
+                if (pGrEq.getName().equals(grEqSplit[0]) && lex(pGrEq.getVersion(), grEqSplit[1]) >= 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                }
+              }
+              /* if (!flag) {
+                System.out.println("isValid grEq");
+                return false;
+              } */
+  
+              // Greater than or Equal To
+              // 1. Split into Package name and version
+              // 2. Loop through all installed packages
+              // 3. Find version name and check for correct version with compareTo()
+              // 4. If found set local oolean to true and continue looping
+              // 5. If not found immediately return FALSE overall
+  
+            } else if (q.contains("<") && q.contains("=")) {
+              // Less Than or Equal To
+              String[] leEqSplit = q.split("<=",2);
+              boolean flag = false;
+              for (Package pLeEq : installed) {
+                if (pLeEq.getName().equals(leEqSplit[0]) && lex(pLeEq.getVersion(), leEqSplit[1]) <= 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                }
+              }
+              /* if (!flag) {
+                System.out.println("isValid leEq");
+                return false;
+              } */
+            } else if (q.contains(">")) {
+              // Greater Than
+              String[] grSplit = q.split(">",2);
+              boolean flag = false;
+              for (Package pGr : installed) {
+                if (pGr.getName().equals(grSplit[0]) && lex(pGr.getVersion(), grSplit[1]) > 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                }
+              }
+              /* if (!flag) {
+                return false;
+              } */
+  
+            } else if (q.contains("<")) {
+              // Less Than
+  
+              String[] leSplit = q.split("<",2);
+              boolean flag = false;
+              
+              for (Package pLe : installed) {
+                if (pLe.getName().equals(leSplit[0]) && lex(pLe.getVersion(), leSplit[1]) < 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                  //System.out.println(q);
+                  //System.out.println(leSplit[0] + " " + leSplit[1] + " " + pLe.getName() +  " " + pLe.getVersion());
+                }
+              }
+              /* if (!flag) {
+                System.out.println("isValid gr");
+                return false;
+              } */
+            } else if (q.contains("=")) {
+              // Equals
+              
+              String[] eqSplit = q.split("=",2);
+              boolean flag = false;
+              for (Package pEq : installed) {
+                if (pEq.getName().equals(eqSplit[0]) && lex(pEq.getVersion(), eqSplit[1]) == 0  ) {
+                  flag = true;
+                  isDepClauseValid = true;
+                }
+              }
+              /* if (!flag) {
+                System.out.println("isValid eq");
+                return false;
+              } */
+            } else {
+              // Any Version
+              System.out.println(p1.getName() + "  dep: " +  q);
+              boolean flag = false;
+              for (Package any : installed) {
+                
+                if (any.getName().equals(q)){
+                  System.out.println("true");
+                  flag = true;
+                  isDepClauseValid = true;
+                }
+              }
+  
+              /* if (!flag) {
+                System.out.println("isValid ANY");
+                return false;
+              } */
+            }
+          }
+        }
+
+
+
+
+        
+         // why1
+        System.out.println("isDepClauseValid " + isDepClauseValid);
         if (!isDepClauseValid) {
           return false;
         }
