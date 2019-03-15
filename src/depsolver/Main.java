@@ -120,7 +120,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
       // END SEEN 0
     } else {
-    System.out.println("Else");
+    
     ArrayList<String> emptySet = new ArrayList<String>();
     search(installedPacks, repo, emptySet);
 
@@ -366,11 +366,11 @@ static List<String> constraintsMa = new ArrayList<>();
           }
  */
           solFound = true;
-          /* System.out.println("Solution");
+          System.out.println("Solution");
           for (Package sol : x) {
             System.out.println(sol.getName() + " " + sol.getVersion());
           }
-          System.out.println("\n"); */
+          System.out.println("\n");
           
           solution = x;
 
