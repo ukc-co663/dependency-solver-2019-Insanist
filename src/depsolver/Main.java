@@ -115,8 +115,10 @@ static List<String> constraintsMa = new ArrayList<>();
     }
 
     if (benchmark.getName().equals(comparePack.getName())) {
+      List<String> lowCmds = new ArrayList<String>();
       String instLowest = "+" + lowestPack.getName() + "=" + lowestPack.getVersion();
-      System.out.println(JSON.toJSONString(instLowest, true));
+      lowCmds.add(instLowest);
+      System.out.println(JSON.toJSONString(lowCmds, true));
 
       // END SEEN 0
     } else {
