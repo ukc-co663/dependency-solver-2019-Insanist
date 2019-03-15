@@ -533,7 +533,7 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
           } else {
             // Any Version
-            
+            System.out.println(q);
             boolean flag = false;
             for (Package any : installed) {
               
