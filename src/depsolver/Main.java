@@ -115,7 +115,7 @@ static List<String> constraintsMa = new ArrayList<>();
     }
 
     if (benchmark.getName().equals(comparePack.getName())) {
-      String instLowest = "[+" + lowestPack.getName() + "=" + lowestPack.getVersion() + "]";
+      String instLowest = "[\"+" + lowestPack.getName() + "=" + lowestPack.getVersion() + "\"];";
       System.out.println(JSON.toJSONString(instLowest, true));
 
       // END SEEN 0
