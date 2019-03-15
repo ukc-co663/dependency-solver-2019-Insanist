@@ -120,7 +120,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
       // END SEEN 0
     } else {
-      //System.out.println(commands);
+    System.out.println("Else");
     ArrayList<String> emptySet = new ArrayList<String>();
     search(installedPacks, repo, emptySet);
 
