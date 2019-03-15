@@ -540,12 +540,12 @@ static List<String> constraintsMa = new ArrayList<>();
               } */
             } else {
               // Any Version
-              System.out.println(p1.getName() + "  dep: " +  q);
+              //System.out.println(p1.getName() + "  dep: " +  q);
               boolean flag = false;
               for (Package any : installed) {
                 
                 if (any.getName().equals(q)){
-                  System.out.println("true");
+                  //System.out.println("true");
                   flag = true;
                   isDepClauseValid = true;
                 }
@@ -649,12 +649,12 @@ static List<String> constraintsMa = new ArrayList<>();
               } */
             } else {
               // Any Version
-              System.out.println(p1.getName() + "  dep: " +  q);
+              //System.out.println(p1.getName() + "  dep: " +  q);
               boolean flag = false;
               for (Package any : installed) {
                 
                 if (any.getName().equals(q)){
-                  System.out.println("true");
+                  //System.out.println("true");
                   flag = true;
                   isDepClauseValid = true;
                 }
