@@ -673,7 +673,7 @@ static List<String> constraintsMa = new ArrayList<>();
 
         
          // why1
-        System.out.println("isDepClauseValid " + isDepClauseValid);
+        //System.out.println("isDepClauseValid " + isDepClauseValid);
         if (!isDepClauseValid) {
           return false;
         }
