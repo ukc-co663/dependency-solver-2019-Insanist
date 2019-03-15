@@ -533,7 +533,7 @@ static List<String> constraintsMa = new ArrayList<>();
             } */
           } else {
             // Any Version
-            System.out.println(q);
+            System.out.println(p1.getName() + "  dep: " +  q);
             boolean flag = false;
             for (Package any : installed) {
               
