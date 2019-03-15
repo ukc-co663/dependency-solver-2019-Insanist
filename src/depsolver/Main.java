@@ -103,7 +103,7 @@ static List<String> constraintsMa = new ArrayList<>();
     Package benchmark = repo.get(0);
     Package comparePack = new Package();
     int lowestSize = repo.get(0).getSize();
-    Package lowestPack = new Package();
+    Package lowestPack = repo.get(0);
 
 
 
@@ -115,7 +115,7 @@ static List<String> constraintsMa = new ArrayList<>();
     }
 
     if (benchmark.getName().equals(comparePack.getName())) {
-      String instLowest = "+" + lowestPack.getName() + "=" + lowestPack.getVersion();
+      String instLowest = "[+" + lowestPack.getName() + "=" + lowestPack.getVersion() + "]";
       System.out.println(JSON.toJSONString(instLowest, true));
 
       // END SEEN 0
