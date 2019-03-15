@@ -448,7 +448,7 @@ static List<String> constraintsMa = new ArrayList<>();
         
         
         if (clause.size() > 1) {
-          System.out.println("OR Clause size: " + clause.size());
+          System.out.println( p1.getName() + " OR Clause size: " + clause.size());
           isDepClauseValid = false;
           // Loop through clause and if found a valid section, set to true
           for (String q : clause) {
