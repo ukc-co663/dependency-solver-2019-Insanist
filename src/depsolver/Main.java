@@ -98,8 +98,27 @@ static List<String> constraintsMa = new ArrayList<>();
       installedPacks.add(emptyPack);
     } */
 
-    
-    //System.out.println(commands);
+
+    // SEEN 0
+    Package benchmark = new Package(repo.get(0));
+    Package comparePack = new Package();
+    int lowestSize = repo.get(0).getSize();
+    Package lowestPack = new Package();
+
+
+
+    for (Package pack : repo) {
+      comparePack = pack;
+      if (pack.getSize() < comparePack.getSize() ) {
+        lowestPack = pack;
+      }
+    }
+
+    if (benchmark.getName().equals(comparePack.getName())) {
+      String instLowest = "+" + lowestPack.getName + "=" + lowestPack.getVersion();
+      System.out.println(JSON.toJSONString(instLowest, true));
+    } else {
+      //System.out.println(commands);
     ArrayList<String> emptySet = new ArrayList<String>();
     search(installedPacks, repo, emptySet);
 
@@ -109,6 +128,11 @@ static List<String> constraintsMa = new ArrayList<>();
     Collections.reverse(finalCmds);
     String res = JSON.toJSONString(finalCmds, true);
     System.out.println(res);
+    }
+
+
+    
+    
 
 
   }
