@@ -538,6 +538,7 @@ static List<String> constraintsMa = new ArrayList<>();
             for (Package any : installed) {
               
               if (any.getName().equals(q)){
+                System.out.println("true");
                 flag = true;
                 isDepClauseValid = true;
               }
